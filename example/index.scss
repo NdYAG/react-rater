@@ -1,0 +1,41 @@
+$gold: #fc6;
+$react-rater-hover: lighten($gold, 10%);
+$react-rater-active: $gold;
+
+@import "../react-rater";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    font: 20px/1.8 'Helvetica Nenu', Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+dd + dt {
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+code {
+    display: inline-block;
+    background: #f1f1f1;
+    border-radius: 3px;
+    padding: 0 10px;
+}
+
+pre {
+    background: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px 20px;
+    code {
+        background: transparent;
+    }
+}

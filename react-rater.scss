@@ -1,0 +1,33 @@
+$react-rater-link: #ccc !default;
+$react-rater-hover: #666 !default;
+$react-rater-active: #000 !default;
+
+.react-rater {
+    // based on kejun's gist
+    // http://dabblet.com/gist/4352050
+    // same as transform: scale(-1, 1) but has better compatibility
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    text-align: left;
+    display: inline-block;
+    a {
+        cursor: pointer;
+        color: $react-rater-link;
+        &:hover {
+            color: $react-rater-hover;
+            ~ a {
+                color: $react-rater-hover;
+            }
+        }
+        &.is-active {
+            color: $react-rater-active !important;
+            ~ a {
+                color: $react-rater-active;
+            }
+        }
+        &.is-disabled {
+            color: $react-rater-link !important;
+            cursor: not-allowed;
+        }
+    }
+}
