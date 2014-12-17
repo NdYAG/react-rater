@@ -10,7 +10,7 @@ var App = React.createClass({
             <div>
                 <h1>React Star Rater</h1>
                 <dl>
-                    <dt>Regular Setup</dt>
+                    <dt>Plain tag:</dt>
                     <dd>
                         <pre>
                             <code>
@@ -19,7 +19,7 @@ var App = React.createClass({
                         </pre>
                         <Rater />
                     </dd>
-                    <dt>Limit maximum rating by setting <code>limit</code></dt>
+                    <dt>Limit maximum rating by setting <code>limit</code> attribute</dt>
                     <dd>
                         <pre>
                             <code>
@@ -38,6 +38,7 @@ var App = React.createClass({
                         <Rater total={5} rating={0} onRate={this.handleRate} />
                     </dd>
                 </dl>
+                <p>Take a view of the <a href="https://github.com/NdYAG/react-rater/blob/master/example%2Findex.jsx" target="_blank">source code</a> of this example</p>
             </div>
         )
     }

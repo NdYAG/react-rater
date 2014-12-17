@@ -18,10 +18,10 @@ For bower usage,
 <link rel="stylesheet" href="path/to/react-react.css">
 
 <script src="path/to/react.js"></script>
-<script src="path/to/react-rater.js"></script>
+<script src="path/to/react-rater/index.js"></script>
 ```
 
-Npm:
+NPM:
 
 ```
 npm install react-rater

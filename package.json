@@ -8,10 +8,9 @@
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build-js-for-npm": "./node_modules/.bin/jsx index.jsx > index.js",
-        "build-js-for-bower": "./node_modules/.bin/browserify index.js -o react-rater.js",
+        "build-js": "./node_modules/.bin/jsx index.jsx > index.js",
         "build-css": "sass --sourcemap=none react-rater.scss react-rater.css",
-        "build": "npm run build-js-for-npm & npm run build-js-for-bower & npm run build-css"
+        "build": "npm run build-js & npm run build-css"
     },
     "repository": {
         "type": "git",
