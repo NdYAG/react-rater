@@ -47,6 +47,12 @@ $react-rater-hover: #666 !default;  // color of star on hover
 $react-rater-active: #000 !default; // color of star rated
 ```
 
+## Real world example
+
+Abilu judge system for Douban Music:
+
+![Abilu judge system for Douban Muisc](http://i.imgur.com/fbrX3mg.png)
+
 ## License
 
 BSD.
