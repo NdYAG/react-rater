@@ -30,7 +30,9 @@ npm install react-rater
 
 ## API
 
-### <Rater total={} rating={} limit={} onRate={} />
+```html
+<Rater total={} rating={} limit={} onRate={} />
+```
 
 All attributes are optional.
 

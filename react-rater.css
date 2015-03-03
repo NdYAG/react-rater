@@ -2,7 +2,8 @@
   direction: rtl;
   unicode-bidi: bidi-override;
   text-align: left;
-  display: inline-block; }
+  display: inline-block;
+  line-height: normal; }
   .react-rater a {
     cursor: pointer;
     color: #ccc; }

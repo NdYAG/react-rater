@@ -10,6 +10,7 @@ $react-rater-active: #000 !default;
     unicode-bidi: bidi-override;
     text-align: left;
     display: inline-block;
+    line-height: normal;
     a {
         cursor: pointer;
         color: $react-rater-link;
