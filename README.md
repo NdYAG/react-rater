@@ -39,7 +39,7 @@ All attributes are optional.
 * `total`: default 5
 * `rating`: default 0
 * `limit`: default same as `total`. Sets the maximum rating value available.
-* `onRate`: `function(rating, lastRating)`. The callback for you to retrieve rating value.
+* `onRate`: `function(rating, lastRating)`. Callback to retrieve rating value.
 
 ## Styling
 

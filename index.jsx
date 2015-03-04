@@ -40,40 +40,38 @@
                 rating: this.props.rating
             })
         },
-        componentWillReceiveProps: function(nextProps) {
-            this.setState({
-                rating: nextProps.rating
-            })
-        },
         handleMouseEnter: function () {
             this.setState({
                 rating: 0
             })
         },
+        handleMouseMove: function(e) {
+            var rating = getRatingFromDOMEvent(e, this.props)
+              , callback = this.props.onRate
+            callback && callback(rating)
+        },
         handleMouseLeave: function () {
-            this.setState({
-                rating: this.state.lastRating
-            })
+            var callback = this.props.onRate
+              , state = this.state
+            if (state.rating === 0) {
+                callback && callback(state.lastRating)
+                this.setState({
+                    rating: state.lastRating
+                })
+            }
         },
         handleClick: function (e) {
-            var star = e.target
-              , allStars = Array.prototype.slice.call(e.currentTarget.childNodes, 0)
-              , index = allStars.indexOf(star)
-              , rating = this.props.total - index
-              , limit = Number(this.props.limit)
+            var rating = getRatingFromDOMEvent(e, this.props)
               , lastRating = Number(this.state.lastRating)
               , callback = this.props.onRate
-            if (star.getAttribute('class').indexOf('is-disabled') > -1) {
+            if (e.target.getAttribute('class').indexOf('is-disabled') > -1) {
                 return
             }
-            limit = (this.props.limit === void 0)? this.props.total: limit
-            rating = rating < limit? rating: limit
-            rating = (rating === lastRating)? '0': rating
             this.setState({
                 lastRating: rating,
                 rating: rating
             })
-            callback && callback(Number(rating), Number(lastRating))
+            callback && callback(rating, lastRating)
         },
         render: function () {
             var total = Number(this.props.total)
@@ -93,9 +91,20 @@
                     className="react-rater"
                     onMouseEnter={this.handleMouseEnter}
                     onMouseLeave={this.handleMouseLeave}
+                    onMouseMove={this.handleMouseMove}
                     onClick={this.handleClick}>{nodes}</div>
             )
         }
     })
+    function getRatingFromDOMEvent(e, props) {
+        var star = e.target
+          , allStars = Array.prototype.slice.call(e.currentTarget.childNodes, 0)
+          , index = allStars.indexOf(star)
+          , rating = props.total - index
+          , limit = Number(props.limit)
+        limit = (props.limit === void 0)? props.total: limit
+        rating = rating < limit? rating: limit
+        return Number(rating)
+    }
     return Rater
 })
