@@ -28,9 +28,6 @@
         "url": "https://github.com/NdYAG/react-rater/issues"
     },
     "homepage": "https://github.com/NdYAG/react-rater",
-    "peerDependencies": {
-        "react": "^0.12.1"
-    },
     "devDependencies": {
         "react-tools": "^0.12.1"
     }
