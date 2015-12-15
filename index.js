@@ -40,6 +40,12 @@
                 rating: this.props.rating
             })
         },
+        componentWillReceiveProps: function(nextProps) {
+            this.setState({
+                rating: nextProps.rating,
+                lastRating: nextProps.rating
+            })
+        },
         handleMouseEnter: function () {
             this.setState({
                 rating: 0
