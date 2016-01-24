@@ -2,7 +2,7 @@ $gold: #fc6;
 $react-rater-hover: lighten($gold, 10%);
 $react-rater-active: $gold;
 
-@import "../react-rater";
+@import "../src/react-rater";
 
 html, body {
     margin: 0;
