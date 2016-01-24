@@ -12,13 +12,19 @@ Bower:
 bower install react-rater
 ```
 
-For bower usage,
-
 ```html
 <link rel="stylesheet" href="path/to/react-react.css">
 
 <script src="path/to/react.js"></script>
-<script src="path/to/react-rater/index.js"></script>
+<script src="path/to/react-dom.js"></script>
+<script src="path/to/react-rater/dist/react-rater.js"></script>
+<script>
+  ReactDOM.render(
+    React.createElement(ReactRater.default, {
+      total: 5,
+      rating: 2
+    }), document.getElementById('app'))
+</script>
 ```
 
 NPM:
@@ -27,6 +33,14 @@ NPM:
 npm install react-rater
 ```
 
+```js
+import Rater from 'react-rater'
+
+// ...
+render() {
+  return (<Rater total={5} rating={2} />)
+}
+```
 
 ## API
 
@@ -40,6 +54,8 @@ All attributes are optional.
 * `rating`: default 0
 * `limit`: default same as `total`. Sets the maximum rating value available.
 * `onRate`: `function(rating, lastRating)`. Callback to retrieve rating value.
+
+Notice: `onRate` is called on mousemove/click/mouseleave. Only for click `lastRating` has a value.
 
 ## Styling
 

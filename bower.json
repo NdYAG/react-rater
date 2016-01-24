@@ -1,7 +1,7 @@
 {
   "name": "react-rater",
-  "main": "react-rater.js",
-  "version": "0.1.0",
+  "main": "dist/react-rater.js",
+  "version": "0.2.0",
   "homepage": "https://github.com/NdYAG/react-rater",
   "authors": [
     "ndyag"
