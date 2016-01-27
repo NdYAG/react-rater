@@ -1,18 +1,19 @@
 {
   "name": "react-rater",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A star rater in react.js",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "directories": {
     "example": "example"
   },
   "scripts": {
-    "build-js": "webpack",
-    "build-css": "sass --sourcemap=none src/react-rater.scss dist/react-rater.css",
-    "build": "npm run build-js & npm run build-css",
+    "compile-scss": "sass --sourcemap=none src/react-rater.scss",
+    "build-lib": "rm -rf lib && babel src --out-dir lib; npm run -s compile-scss >> lib/react-rater.css",
+    "build-dist": "webpack; npm run -s compile-scss >> dist/react-rater.css",
     "build-example-js": "webpack --config example/webpack.config.js",
     "build-example-css": "sass --sourcemap=none example/index.scss example/build.css",
-    "build-example": "npm run build-example-js & npm run build-example-css"
+    "build-example": "npm run build-example-js & npm run build-example-css",
+    "prepublish": "npm run build-lib"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "babel": "^6.3.26",
+    "babel-cli": "^6.4.5",
     "babel-core": "^6.4.5",
     "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.1",

@@ -1,7 +1,7 @@
 {
   "name": "react-rater",
   "main": "dist/react-rater.js",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/NdYAG/react-rater",
   "authors": [
     "ndyag"
@@ -19,6 +19,10 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "src",
+    "lib",
+    "package.json",
+    "webpack*"
   ]
 }
