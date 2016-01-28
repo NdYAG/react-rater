@@ -4,3 +4,4 @@ webpack.*
 src/
 example/
 dist/
+__tests__/
