@@ -76,7 +76,8 @@ export default class Rater extends Component {
            onMouseEnter={this.handleMouseEnter.bind(this)}
            onMouseLeave={this.handleMouseLeave.bind(this)}
            onMouseMove={this.handleMouseMove.bind(this)}
-           onClick={this.handleClick.bind(this)}>{nodes}</div>
+           onClick={this.handleClick.bind(this)}
+           {...this.props}>{nodes}</div>
     )
   }
 }
