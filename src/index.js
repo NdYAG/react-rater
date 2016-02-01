@@ -72,7 +72,7 @@ export default class Rater extends Component {
       }
     })
     return (
-      <div className="react-rater"
+      <div className={this.props.className || 'react-rater'}
            onMouseEnter={this.handleMouseEnter.bind(this)}
            onMouseLeave={this.handleMouseLeave.bind(this)}
            onMouseMove={this.handleMouseMove.bind(this)}
