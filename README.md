@@ -67,6 +67,10 @@ $react-rater-active: #000 !default; // color of star rated
 
 ## Real world example
 
+Valentine's Day:
+
+![Valentine](http://7d9o0k.com1.z0.glb.clouddn.com/valentine.png)
+
 Abilu judge system for Douban Music:
 
 ![Abilu judge system for Douban Muisc](http://i.imgur.com/fbrX3mg.png)
