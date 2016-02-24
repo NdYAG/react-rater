@@ -59,10 +59,24 @@ Notice: `onRate` is called on mousemove/click/mouseleave. Only for click `lastRa
 
 ## Styling
 
+### The CSS way
+
 ```scss
 $react-rater-link: #ccc !default;   // color of star not rated
 $react-rater-hover: #666 !default;  // color of star on hover
 $react-rater-active: #000 !default; // color of star rated
+```
+
+### The JS way
+
+`<Rater />` will repeat its children until counts reach `total`. https://github.com/NdYAG/react-rater/blob/master/src/index.js#L69
+
+In this way you can define your own 'star' component (remember to check out [src/star.js](https://github.com/NdYAG/react-rater/blob/master/src%2Fstar.js)).
+
+```
+<Rater total={5}>
+  <Heart />
+</Rater>
 ```
 
 ## Real world example

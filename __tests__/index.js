@@ -25,8 +25,8 @@ describe('<Rater total={5} rating={2} limit={4} />', () => {
       <Rater total={5} rating={2} limit={4} />
     )
     const stars = TestUtils.scryRenderedDOMComponentsWithTag(rater, 'a')
-    TestUtils.Simulate.click(stars[1])
-    TestUtils.Simulate.click(stars[0])
+    TestUtils.Simulate.click(stars[3])
+    TestUtils.Simulate.click(stars[4])
     expect(rater.state.rating).toEqual(4)
   })
 })

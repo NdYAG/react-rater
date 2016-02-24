@@ -1,8 +1,24 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import twemoji from 'twemoji'
 import Rater from '../src/'
 
-class RegularExample extends Component {
+class Face extends Component {
+  render() {
+    let icons = {
+      bad: '\uD83D\uDE14',
+      normal: '\uD83D\uDE17',
+      good: '\uD83D\uDE18'
+    }
+    if (this.props.isActive || this.props.willBeActive) {
+      return (<span dangerouslySetInnerHTML={{__html: twemoji.parse(icons[this.props.icon])}}></span>)
+    } else {
+      return (<span dangerouslySetInnerHTML={{__html: twemoji.parse('\uD83D\uDE11')}}></span>)
+    }
+  }
+}
+
+class Example extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -52,6 +68,24 @@ class RegularExample extends Component {
             <Rater rating={this.state.rating} onRate={this.handleRate.bind(this)} />
             <span>{ 'Rating value: ' + this.state.rating}</span>
           </dd>
+          <dt>Customize star</dt>
+          <dd>
+            <pre>
+              <code>
+                {`
+<Rater total={3} rating={2}>
+  <Face icon="bad" />
+  <Face icon="normal" />
+  <Face icon="good" />
+</Rater>`.trim()}
+              </code>
+            </pre>
+            <Rater total={3} className="face-rater">
+              <Face icon="bad" />
+              <Face icon="normal" />
+              <Face icon="good" />
+            </Rater>
+          </dd>
         </dl>
       </div>
     )
@@ -59,11 +93,7 @@ class RegularExample extends Component {
 }
 
 function render() {
-  ReactDOM.render(
-    <div>
-      <RegularExample />
-    </div>
-  , document.getElementById('app'))
+  ReactDOM.render(<Example />, document.getElementById('app'))
 }
 
 render()

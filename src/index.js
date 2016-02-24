@@ -8,7 +8,8 @@ export default class Rater extends Component {
     super(props)
     this.state = {
       lastRating: props.rating,
-      rating: props.rating
+      rating: props.rating,
+      isRating: false
     }
   }
   componentDidMount() {
@@ -21,22 +22,33 @@ export default class Rater extends Component {
       rating: nextProps.rating
     })
   }
-  handleMouseEnter() {
-    this.setState({
-      rating: 0
-    })
+  handleMouseEnter(e) {
+    let rating = getRatingFromDOMEvent(e, this.props)
+    if (rating > 0) {
+      this.setState({
+        rating: 0,
+        isRating: true
+      })
+    }
   }
   handleMouseMove(e) {
     let rating = getRatingFromDOMEvent(e, this.props)
       , callback = this.props.onRate
-    ;(rating > 0) && callback && callback(rating)
+    if (rating > 0) {
+      this.setState({
+        rating: rating,
+        isRating: true
+      })
+      callback && callback(rating)
+    }
   }
   handleMouseLeave() {
     let callback = this.props.onRate
       , state = this.state
     callback && callback(state.lastRating)
     this.setState({
-      rating: state.lastRating
+      rating: state.lastRating,
+      isRating: false
     })
   }
   handleClick(e) {
@@ -61,8 +73,9 @@ export default class Rater extends Component {
     limit = (this.props.limit === void 0)? total: limit
     nodes = Array(total).join(',').split(',').map((_, i) => {
       let starProps = {
-        isActive: (i >= total - rating) ? true: false,
-        isDisabled: (i < total - limit) ? true: false,
+        isActive: (!this.state.isRating && i < rating) ? true: false,
+        willBeActive: (this.state.isRating && i < rating)? true: false,
+        isDisabled: (i < limit) ? false: true,
         key: `star-${i}`
       }
       if (children.length) {
@@ -88,10 +101,10 @@ Rater.defaultProps = {
 }
 
 function getRatingFromDOMEvent(e, props) {
-  let star = e.target
-    , allStars = Array.apply(null, e.currentTarget.childNodes)
+  let allStars = Array.apply(null, e.currentTarget.childNodes)
+    , star = findStarDOMNode(e.target, allStars, e.currentTarget)
     , index = allStars.indexOf(star)
-    , rating = props.total - index
+    , rating = index + 1
     , limit = Number(props.limit)
   if (index < 0) {
     return -1
@@ -99,4 +112,11 @@ function getRatingFromDOMEvent(e, props) {
   limit = (props.limit === void 0)? props.total: limit
   rating = rating < limit? rating: limit
   return Number(rating)
+}
+
+function findStarDOMNode(node, stars, container) {
+  while(node !== container && stars.indexOf(node) === -1) {
+    node = node.parentNode
+  }
+  return node
 }
