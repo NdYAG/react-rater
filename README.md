@@ -2,6 +2,8 @@
 
 Star rater
 
+![](http://7d9o0k.com1.z0.glb.clouddn.com/rater.gif)
+
 [Live demo](https://rawgit.com/ndyag/react-rater/master/example/index.html)
 
 ## install
