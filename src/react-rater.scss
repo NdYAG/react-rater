@@ -19,4 +19,9 @@ $react-rater-active: #000 !default;
             cursor: not-allowed;
         }
     }
+    &.is-disabled {
+      a {
+        cursor: default;
+      }
+    }
 }

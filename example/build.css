@@ -11,6 +11,8 @@
     .react-rater a.is-disabled {
       color: #ccc;
       cursor: not-allowed; }
+  .react-rater.is-disabled a {
+    cursor: default; }
 
 html, body {
   margin: 0;

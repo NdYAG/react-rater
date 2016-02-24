@@ -68,6 +68,15 @@ class Example extends Component {
             <Rater rating={this.state.rating} onRate={this.handleRate.bind(this)} />
             <span>{ 'Rating value: ' + this.state.rating}</span>
           </dd>
+          <dt>Read-only</dt>
+          <dd>
+            <pre>
+              <code>
+                {'<Rater interactive={false} rating={3} />'}
+              </code>
+            </pre>
+            <Rater interactive={false} rating={3} />
+          </dd>
           <dt>Customize star</dt>
           <dd>
             <pre>

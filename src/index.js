@@ -68,6 +68,7 @@ export default class Rater extends Component {
     let total = Number(this.props.total)
       , limit = Number(this.props.limit)
       , rating = Number(this.state.rating)
+      , interactive = this.props.interactive
       , children = Array.prototype.concat(this.props.children).filter(Boolean)
       , nodes
     limit = (this.props.limit === void 0)? total: limit
@@ -84,20 +85,27 @@ export default class Rater extends Component {
         return (<Star {...starProps} />)
       }
     })
-    return (
-      <div className="react-rater"
-           onMouseEnter={this.handleMouseEnter.bind(this)}
-           onMouseLeave={this.handleMouseLeave.bind(this)}
-           onMouseMove={this.handleMouseMove.bind(this)}
-           onClick={this.handleClick.bind(this)}
-           {...this.props}>{nodes}</div>
-    )
+    if (interactive) {
+      return (
+        <div className="react-rater"
+             onMouseEnter={this.handleMouseEnter.bind(this)}
+             onMouseLeave={this.handleMouseLeave.bind(this)}
+             onMouseMove={this.handleMouseMove.bind(this)}
+             onClick={this.handleClick.bind(this)}
+             {...this.props}>{nodes}</div>
+      )
+    } else {
+      return (
+        <div className="react-rater is-disabled" {...this.props}>{nodes}</div>
+      )
+    }
   }
 }
 
 Rater.defaultProps = {
   total: 5,
-  rating: 0
+  rating: 0,
+  interactive: true
 }
 
 function getRatingFromDOMEvent(e, props) {

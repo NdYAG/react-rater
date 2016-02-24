@@ -216,6 +216,25 @@
 	          _react2.default.createElement(
 	            'dt',
 	            null,
+	            'Read-only'
+	          ),
+	          _react2.default.createElement(
+	            'dd',
+	            null,
+	            _react2.default.createElement(
+	              'pre',
+	              null,
+	              _react2.default.createElement(
+	                'code',
+	                null,
+	                '<Rater interactive={false} rating={3} />'
+	              )
+	            ),
+	            _react2.default.createElement(_src2.default, { interactive: false, rating: 3 })
+	          ),
+	          _react2.default.createElement(
+	            'dt',
+	            null,
 	            'Customize star'
 	          ),
 	          _react2.default.createElement(
@@ -20583,6 +20602,7 @@
 	      var total = Number(this.props.total),
 	          limit = Number(this.props.limit),
 	          rating = Number(this.state.rating),
+	          interactive = this.props.interactive,
 	          children = Array.prototype.concat(this.props.children).filter(Boolean),
 	          nodes = undefined;
 	      limit = this.props.limit === void 0 ? total : limit;
@@ -20599,16 +20619,24 @@
 	          return _react2.default.createElement(_star2.default, starProps);
 	        }
 	      });
-	      return _react2.default.createElement(
-	        'div',
-	        _extends({ className: 'react-rater',
-	          onMouseEnter: this.handleMouseEnter.bind(this),
-	          onMouseLeave: this.handleMouseLeave.bind(this),
-	          onMouseMove: this.handleMouseMove.bind(this),
-	          onClick: this.handleClick.bind(this)
-	        }, this.props),
-	        nodes
-	      );
+	      if (interactive) {
+	        return _react2.default.createElement(
+	          'div',
+	          _extends({ className: 'react-rater',
+	            onMouseEnter: this.handleMouseEnter.bind(this),
+	            onMouseLeave: this.handleMouseLeave.bind(this),
+	            onMouseMove: this.handleMouseMove.bind(this),
+	            onClick: this.handleClick.bind(this)
+	          }, this.props),
+	          nodes
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'div',
+	          _extends({ className: 'react-rater is-disabled' }, this.props),
+	          nodes
+	        );
+	      }
 	    }
 	  }]);
 
@@ -20619,7 +20647,8 @@
 
 	Rater.defaultProps = {
 	  total: 5,
-	  rating: 0
+	  rating: 0,
+	  interactive: true
 	};
 
 	function getRatingFromDOMEvent(e, props) {

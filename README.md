@@ -54,8 +54,9 @@ All attributes are optional.
 * `rating`: default 0
 * `limit`: default same as `total`. Sets the maximum rating value available.
 * `onRate`: `function(rating, lastRating)`. Callback to retrieve rating value.
+* `interactive`: default `true`. Create a read-only rater by setting this attribute to `false`.
 
-Notice: `onRate` is called on mousemove/click/mouseleave. Only for click `lastRating` has a value.
+Notice: `onRate` is called on mousemove/mouseenter/click/mouseleave. Only for click `lastRating` has a value.
 
 ## Styling
 
