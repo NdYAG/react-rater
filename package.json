@@ -1,6 +1,6 @@
 {
   "name": "react-rater",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A star rater in react.js",
   "main": "lib/index.js",
   "directories": {
@@ -53,11 +53,14 @@
     "babel-eslint": "^4.1.6",
     "babel-jest": "^6.0.1",
     "babel-loader": "^6.2.1",
+    "babel-polyfill": "^6.8.0",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "eslint": "^1.10.3",
     "eslint-loader": "^1.2.0",
+    "eslint-plugin-react": "^5.0.1",
+    "jest": "^0.1.40",
     "jest-cli": "^0.8.2",
     "react-addons-test-utils": "^0.14.6",
     "webpack": "^1.12.12"

@@ -23,7 +23,7 @@ export default class Rater extends Component {
     })
   }
   handleMouseEnter(e) {
-    let rating = getRatingFromDOMEvent(e, this.props)
+    let { rating } = getRatingFromDOMEvent(e, this.props)
     if (rating > 0) {
       this.setState({
         rating: 0,
@@ -32,7 +32,7 @@ export default class Rater extends Component {
     }
   }
   handleMouseMove(e) {
-    let rating = getRatingFromDOMEvent(e, this.props)
+    let { rating } = getRatingFromDOMEvent(e, this.props)
       , callback = this.props.onRate
     if (rating > 0) {
       this.setState({
@@ -52,10 +52,10 @@ export default class Rater extends Component {
     })
   }
   handleClick(e) {
-    let rating = getRatingFromDOMEvent(e, this.props)
+    let { index, rating } = getRatingFromDOMEvent(e, this.props)
       , lastRating = Number(this.state.lastRating)
       , callback = this.props.onRate
-    if (rating < 0 || e.target.getAttribute('class').indexOf('is-disabled') > -1) {
+    if (rating < 0 || this.refs[`star-${index}`].props.isDisabled) {
       return
     }
     this.setState({
@@ -77,7 +77,8 @@ export default class Rater extends Component {
         isActive: (!this.state.isRating && i < rating) ? true: false,
         willBeActive: (this.state.isRating && i < rating)? true: false,
         isDisabled: (i < limit) ? false: true,
-        key: `star-${i}`
+        key: `star-${i}`,
+        ref: `star-${i}`
       }
       if (children.length) {
         return React.cloneElement(children[i % children.length], starProps)
@@ -115,11 +116,17 @@ function getRatingFromDOMEvent(e, props) {
     , rating = index + 1
     , limit = Number(props.limit)
   if (index < 0) {
-    return -1
+    return {
+      index,
+      rating: -1
+    }
   }
   limit = (props.limit === void 0)? props.total: limit
   rating = rating < limit? rating: limit
-  return Number(rating)
+  return {
+    index,
+    rating: Number(rating)
+  }
 }
 
 function findStarDOMNode(node, stars, container) {

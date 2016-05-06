@@ -82,14 +82,14 @@ class Example extends Component {
             <pre>
               <code>
                 {`
-<Rater total={3} rating={2}>
+<Rater total={5} limit={3}>
   <Face icon="bad" />
   <Face icon="normal" />
   <Face icon="good" />
 </Rater>`.trim()}
               </code>
             </pre>
-            <Rater total={3} className="face-rater">
+            <Rater total={5} limit={3} className="face-rater">
               <Face icon="bad" />
               <Face icon="normal" />
               <Face icon="good" />
