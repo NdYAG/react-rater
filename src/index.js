@@ -55,7 +55,7 @@ export default class Rater extends Component {
     let { index, rating } = getRatingFromDOMEvent(e, this.props)
       , lastRating = Number(this.state.lastRating)
       , callback = this.props.onRate
-    if (rating < 0 || this.refs[`star-${index}`].props.isDisabled) {
+    if (rating < 0 || e.target.className==='is-disabled') {
       return
     }
     this.setState({
@@ -77,8 +77,7 @@ export default class Rater extends Component {
         isActive: (!this.state.isRating && i < rating) ? true: false,
         willBeActive: (this.state.isRating && i < rating)? true: false,
         isDisabled: (i < limit) ? false: true,
-        key: `star-${i}`,
-        ref: `star-${i}`
+        key: `star-${i}`
       }
       if (children.length) {
         return React.cloneElement(children[i % children.length], starProps)
