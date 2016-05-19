@@ -5,46 +5,46 @@ $react-rater-active: $gold;
 @import "../src/react-rater";
 
 html, body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    font: 20px/1.8 'Helvetica Nenu', Helvetica, sans-serif;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  font: 20px/1.8 'Helvetica Nenu', Helvetica, sans-serif;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 dd + dt {
-    border-top: 1px solid #eee;
-    margin-top: 20px;
-    padding-top: 20px;
+  border-top: 1px solid #eee;
+  margin-top: 20px;
+  padding-top: 20px;
 }
 
 code {
-    display: inline-block;
-    background: #f1f1f1;
-    border-radius: 3px;
-    padding: 0 10px;
+  display: inline-block;
+  background: #f1f1f1;
+  border-radius: 3px;
+  padding: 0 10px;
 }
 
 pre {
-    background: #f1f1f1;
-    border-radius: 5px;
-    padding: 10px 20px;
-    code {
-        background: transparent;
-    }
+  background: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px 20px;
+  code {
+    background: transparent;
+  }
 }
 
 .face-rater {
-    span {
-        display: inline-block;
-    }
+  span {
+    display: inline-block;
+  }
 }

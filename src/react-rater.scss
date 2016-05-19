@@ -3,25 +3,25 @@ $react-rater-hover: #666 !default;
 $react-rater-active: #000 !default;
 
 .react-rater {
-    display: inline-block;
-    line-height: normal;
-    a {
-        cursor: pointer;
-        color: $react-rater-link;
-        &.will-be-active {
-            color: $react-rater-hover;
-        }
-        &.is-active {
-            color: $react-rater-active;
-        }
-        &.is-disabled {
-            color: $react-rater-link;
-            cursor: not-allowed;
-        }
+  display: inline-block;
+  line-height: normal;
+  a {
+    cursor: pointer;
+    color: $react-rater-link;
+    &.will-be-active {
+      color: $react-rater-hover;
+    }
+    &.is-active {
+      color: $react-rater-active;
     }
     &.is-disabled {
-      a {
-        cursor: default;
-      }
+      color: $react-rater-link;
+      cursor: not-allowed;
     }
+  }
+  &.is-disabled {
+    a {
+      cursor: default;
+    }
+  }
 }
