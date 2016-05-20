@@ -21061,17 +21061,12 @@
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick(e) {
-	      var _arguments = arguments;
-
 	      var _getRatingFromDOMEven3 = getRatingFromDOMEvent(e, this.props);
 
 	      var index = _getRatingFromDOMEven3.index;
 	      var rating = _getRatingFromDOMEven3.rating;
 	      var lastRating = Number(this.state.lastRating);
 	      var callback = this.props.onRate;
-	      _react2.default.Children.forEach(this.props.children, function () {
-	        console.log(_arguments);
-	      });
 	      if (rating < 0 || this.refs['star-' + index].props.isDisabled) {
 	        return;
 	      }

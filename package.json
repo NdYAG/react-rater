@@ -1,6 +1,6 @@
 {
   "name": "react-rater",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A star rater in react.js",
   "main": "lib/index.js",
   "directories": {
@@ -41,10 +41,9 @@
     "url": "https://github.com/NdYAG/react-rater/issues"
   },
   "homepage": "https://github.com/NdYAG/react-rater",
-  "dependencies": {
-    "react": "^15.0.2",
-    "react-dom": "^15.0.2",
-    "twemoji": "^2.0.5"
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0",
+    "react-dom": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
     "babel": "^6.3.26",
@@ -63,6 +62,7 @@
     "jest": "^0.1.40",
     "jest-cli": "^12.0.2",
     "react-addons-test-utils": "^15.0.2",
+    "twemoji": "^2.0.5",
     "webpack": "^1.12.12"
   }
 }
