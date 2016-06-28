@@ -8,29 +8,6 @@ Star rater
 
 ## install
 
-Bower:
-
-```sh
-bower install react-rater
-```
-
-```html
-<link rel="stylesheet" href="path/to/react-react.css">
-
-<script src="path/to/react.js"></script>
-<script src="path/to/react-dom.js"></script>
-<script src="path/to/react-rater/dist/react-rater.js"></script>
-<script>
-  ReactDOM.render(
-    React.createElement(ReactRater.default, {
-      total: 5,
-      rating: 2
-    }), document.getElementById('app'))
-</script>
-```
-
-NPM:
-
 ```
 npm install react-rater
 ```
