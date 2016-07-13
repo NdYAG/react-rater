@@ -48,4 +48,6 @@ pre {
     background: transparent; }
 
 .face-rater span {
-  display: inline-block; }
+  display: inline-block;
+  font-size: 4rem;
+  cursor: pointer; }

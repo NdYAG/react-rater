@@ -1,21 +1,27 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
-import twemoji from 'twemoji'
 import Rater from '../src/'
 
 class Face extends Component {
   render() {
     let icons = {
-      bad: '\uD83D\uDE14',
-      normal: '\uD83D\uDE17',
-      good: '\uD83D\uDE18'
+      bad: '🙁',
+      normal: '😐',
+      good: '😍'
     }
     if (this.props.isActive || this.props.willBeActive) {
-      return (<span dangerouslySetInnerHTML={{__html: twemoji.parse(icons[this.props.icon])}}></span>)
+      return (<span>{icons[this.props.icon]}</span>)
     } else {
-      return (<span dangerouslySetInnerHTML={{__html: twemoji.parse('\uD83D\uDE11')}}></span>)
+      return (<span>😶</span>)
     }
   }
+}
+
+Face.propTypes = {
+  isActive: PropTypes.bool,
+  willBeActive: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+  icon: PropTypes.string
 }
 
 class Example extends Component {
@@ -89,7 +95,7 @@ class Example extends Component {
 </Rater>`.trim()}
               </code>
             </pre>
-            <Rater total={5} limit={3} className="face-rater">
+            <Rater total={3} className="face-rater">
               <Face icon="bad" />
               <Face icon="normal" />
               <Face icon="good" />

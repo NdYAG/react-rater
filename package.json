@@ -63,7 +63,6 @@
     "jest": "^0.1.40",
     "jest-cli": "^12.0.2",
     "react-addons-test-utils": "^15.0.2",
-    "twemoji": "^2.0.5",
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1"
   }
