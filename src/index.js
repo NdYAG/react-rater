@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Star from './star'
 
 export { Star } from './star'
@@ -11,11 +11,6 @@ export default class Rater extends Component {
       rating: props.rating,
       isRating: false
     }
-  }
-  componentDidMount() {
-    this.setState({
-      rating: this.props.rating
-    })
   }
   componentWillReceiveProps(nextProps) {
     this.setState({
@@ -107,6 +102,15 @@ Rater.defaultProps = {
   total: 5,
   rating: 0,
   interactive: true
+}
+
+Rater.propTypes = {
+  total: PropTypes.number,
+  rating: PropTypes.number,
+  limit: PropTypes.number,
+  interactive: PropTypes.bool,
+  onRate: PropTypes.func,
+  children: PropTypes.any
 }
 
 function getRatingFromDOMEvent(e, props) {

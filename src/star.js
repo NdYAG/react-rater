@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 export default class Star extends Component {
   render() {
@@ -21,4 +21,10 @@ Star.defaultProps = {
   willBeActive: false,
   isActive: false,
   isDisabled: false
+}
+
+Star.propTypes = {
+  isActive: PropTypes.bool,
+  willBeActive: PropTypes.bool,
+  isDisabled: PropTypes.bool
 }
