@@ -19,7 +19,7 @@
     "test": "jest --verbose",
     "compile-scss": "sass --sourcemap=none src/react-rater.scss",
     "build-lib": "rm -rf lib && babel src --out-dir lib; npm run -s compile-scss >> lib/react-rater.css",
-    "build-dist": "NODE_ENV=production webpack; npm run -s compile-scss >> dist/react-rater.css",
+    "build-dist": "webpack; npm run -s compile-scss >> dist/react-rater.css",
     "build-example-js": "webpack --config example/webpack.config.js",
     "build-example-css": "sass --sourcemap=none example/index.scss example/build.css",
     "build-example": "npm run build-example-js & npm run build-example-css",
