@@ -60,14 +60,13 @@ export default class Rater extends Component {
     callback && callback(rating, lastRating)
   }
   render() {
-    let total = Number(this.props.total)
-      , limit = Number(this.props.limit)
-      , rating = Number(this.state.rating)
-      , interactive = this.props.interactive
-      , children = Array.prototype.concat(this.props.children).filter(Boolean)
-      , nodes
+    let {total, limit, rating, interactive, children, ...others} = this.props
+    total = Number(total)
+    limit = Number(limit)
+    rating = Number(this.state.rating)
+    children = Array.prototype.concat(children).filter(Boolean)
     limit = (this.props.limit === void 0)? total: limit
-    nodes = Array(total).join(',').split(',').map((_, i) => {
+    let nodes = Array(total).join(',').split(',').map((_, i) => {
       let starProps = {
         isActive: (!this.state.isRating && i < rating) ? true: false,
         willBeActive: (this.state.isRating && i < rating)? true: false,
@@ -88,7 +87,7 @@ export default class Rater extends Component {
              onMouseLeave={this.handleMouseLeave.bind(this)}
              onMouseMove={this.handleMouseMove.bind(this)}
              onClick={this.handleClick.bind(this)}
-             {...this.props}>{nodes}</div>
+             {...others}>{nodes}</div>
       )
     } else {
       return (
