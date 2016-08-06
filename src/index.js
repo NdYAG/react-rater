@@ -19,10 +19,15 @@ export default class Rater extends Component {
   }
   handleMouseEnter(e) {
     let { rating } = getRatingFromDOMEvent(e, this.props)
+      , callback = this.props.onRate
     if (rating > 0) {
       this.setState({
         rating: 0,
         isRating: true
+      })
+      callback && callback({
+        originalEvent: e,
+        rating
       })
     }
   }
@@ -34,16 +39,22 @@ export default class Rater extends Component {
         rating: rating,
         isRating: true
       })
-      callback && callback(rating)
+      callback && callback({
+        originalEvent: e,
+        rating
+      })
     }
   }
-  handleMouseLeave() {
+  handleMouseLeave(e) {
     let callback = this.props.onRate
       , state = this.state
-    callback && callback(state.lastRating)
     this.setState({
       rating: state.lastRating,
       isRating: false
+    })
+    callback && callback({
+      originalEvent: e,
+      rating: state.lastRating
     })
   }
   handleClick(e) {
@@ -57,7 +68,11 @@ export default class Rater extends Component {
       rating,
       lastRating: rating
     })
-    callback && callback(rating, lastRating)
+    callback && callback({
+      originalEvent: e,
+      rating,
+      lastRating
+    })
   }
   render() {
     let { total, limit, rating, interactive, children, ...rest } = this.props

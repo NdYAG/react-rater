@@ -31,11 +31,37 @@ All attributes are optional.
 
 * `total`: default 5
 * `rating`: default 0
-* `limit`: default same as `total`. Sets the maximum rating value available.
-* `onRate`: `function(rating, lastRating)`. Callback to retrieve rating value.
+* `limit`: default value is same as `total`.
+* `onRate`: `function(e)`. Callback to retrieve rating value.
 * `interactive`: default `true`. Create a read-only rater by setting this attribute to `false`.
 
-Notice: `onRate` is called on mousemove/mouseenter/click/mouseleave. Only for click `lastRating` has a value.
+Notice:
+`onRate` is called on mousemove/mouseenter/click/mouseleave.
+
+For mousemove/mouseenter/mouseleave, the structure of argument `e` is:
+```
+{
+  rating: Number // the rating value,
+  originalEvent: Event
+}
+```
+
+For click, the structure of `e` is:
+```
+{
+  rating: Number // the rating value,
+  lastRating: Number // the last rating value,
+  originalEvent: Event
+}
+```
+In some scenarios, you may want to delete the rating if user rate a same value.
+```javascript
+onRate(e) {
+  if (e.originalEvent.type === 'click' && e.rating === e.lastRating) {
+    // set prop of Rater to 0
+  }
+}
+```
 
 ## Styling
 
