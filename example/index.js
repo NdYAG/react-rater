@@ -88,7 +88,7 @@ class Example extends Component {
             <pre>
               <code>
                 {`
-<Rater total={5} limit={3}>
+<Rater total={3}>
   <Face icon="bad" />
   <Face icon="normal" />
   <Face icon="good" />
