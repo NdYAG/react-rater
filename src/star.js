@@ -5,6 +5,7 @@ export default class Star extends Component {
     let nameMap = {
       isDisabled: 'is-disabled',
       isActive: 'is-active',
+      isActiveHalf: 'is-active-half',
       willBeActive: 'will-be-active'
     }
     let className = Object.keys(nameMap)
@@ -20,11 +21,13 @@ export default class Star extends Component {
 Star.defaultProps = {
   willBeActive: false,
   isActive: false,
+  isActiveHalf: false,
   isDisabled: false
 }
 
 Star.propTypes = {
   isActive: PropTypes.bool,
+  isActiveHalf: PropTypes.bool,
   willBeActive: PropTypes.bool,
   isDisabled: PropTypes.bool
 }
