@@ -3,11 +3,19 @@
   line-height: normal; }
   .react-rater a {
     cursor: pointer;
-    color: #ccc; }
+    color: #ccc;
+    position: relative; }
     .react-rater a.will-be-active {
       color: #ffdd99; }
     .react-rater a.is-active {
       color: #fc6; }
+    .react-rater a.is-active-half:before {
+      color: #fc6;
+      content: '\2605';
+      position: absolute;
+      left: 0;
+      width: 50%;
+      overflow: hidden; }
     .react-rater a.is-disabled {
       color: #ccc;
       cursor: not-allowed; }

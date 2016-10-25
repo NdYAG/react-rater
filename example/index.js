@@ -83,6 +83,15 @@ class Example extends Component {
             </pre>
             <Rater interactive={false} rating={3} />
           </dd>
+          <dt>Read-only</dt>
+          <dd>
+            <pre>
+              <code>
+                {'<Rater interactive={false} fraction={true} rating={3.6} />'}
+              </code>
+            </pre>
+            <Rater interactive={false} fraction={true} rating={3.6} />
+          </dd>
           <dt>Customize star</dt>
           <dd>
             <pre>
