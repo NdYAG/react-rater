@@ -75,7 +75,7 @@ export default class Rater extends Component {
     })
   }
   render() {
-    let { total, limit, rating, interactive, fraction, children, ...rest } = this.props
+    let { total, limit, rating, interactive, children, ...rest } = this.props
     total = Number(total)
     limit = Number(limit)
     rating = Number(this.state.rating)
@@ -84,10 +84,10 @@ export default class Rater extends Component {
     delete rest.onRate
     let nodes = Array(total).join(',').split(',').map((_, i) => {
       let starProps = {
-        isActive: (!this.state.isRating && rating-i >= 1) ? true: false,
-        isActiveHalf: fraction ? (!this.state.isRating && (rating-i >= 0.5 && rating-i < 1)) ? true : false : false,
-        willBeActive: (this.state.isRating && i < rating)? true: false,
-        isDisabled: (i < limit) ? false: true,
+        isActive: !this.state.isRating && (rating-i >= 1),
+        isActiveHalf: !this.state.isRating && (rating-i >= 0.5 && rating-i < 1),
+        willBeActive: this.state.isRating && i < rating,
+        isDisabled: i >= limit,
         key: `star-${i}`,
         ref: `star-${i}`
       }
@@ -117,8 +117,7 @@ export default class Rater extends Component {
 Rater.defaultProps = {
   total: 5,
   rating: 0,
-  interactive: true,
-  fraction: false
+  interactive: true
 }
 
 Rater.propTypes = {
@@ -126,7 +125,6 @@ Rater.propTypes = {
   rating: PropTypes.number,
   limit: PropTypes.number,
   interactive: PropTypes.bool,
-  fraction: PropTypes.bool,
   onRate: PropTypes.func,
   children: PropTypes.any
 }

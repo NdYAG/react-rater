@@ -35,10 +35,17 @@ All attributes are optional.
 * `onRate`: `function(e)`. Callback to retrieve rating value.
 * `interactive`: default `true`. Create a read-only rater by setting this attribute to `false`.
 
-Notice:
+### Read-only mode
+
+Set `interactive={false}` to create a read-only rater.
+
+In read-only mode, `rating` could contain a fractional part like `3.6`. (Thanks to @devmtnaing)
+
+### Callback
+
 `onRate` is called on mousemove/mouseenter/click/mouseleave.
 
-For mousemove/mouseenter/mouseleave, the structure of argument `e` is:
+For mousemove/mouseenter/mouseleave, the structure of argument is:
 ```
 {
   rating: Number // the rating value,
@@ -46,7 +53,7 @@ For mousemove/mouseenter/mouseleave, the structure of argument `e` is:
 }
 ```
 
-For click, the structure of `e` is:
+For click, the structure of argument:
 ```
 {
   rating: Number // the rating value,
@@ -54,10 +61,10 @@ For click, the structure of `e` is:
   originalEvent: Event
 }
 ```
-In some scenarios, you may want to delete the rating if user rate a same value.
+Example: you may want to delete the rating when user rate a same value.
 ```javascript
-onRate(e) {
-  if (e.originalEvent.type === 'click' && e.rating === e.lastRating) {
+onRate({ rating, lastRating, originalEvent }) {
+  if (originalEvent.type === 'click' && rating === lastRating) {
     // set prop of Rater to 0
   }
 }
@@ -77,12 +84,23 @@ $react-rater-active: #000 !default; // color of star rated
 
 `<Rater />` will repeat its children until counts reach `total`. https://github.com/NdYAG/react-rater/blob/master/src/index.js#L69
 
-In this way you can define your own 'star' component (remember to check out [src/star.js](https://github.com/NdYAG/react-rater/blob/master/src%2Fstar.js)).
+In this way you can define your own 'star' component ([src/star.js](https://github.com/NdYAG/react-rater/blob/master/src%2Fstar.js)).
 
 ```
 <Rater total={5}>
   <Heart />
 </Rater>
+```
+
+and style it based on these props:
+
+```
+{
+  isActive: PropTypes.bool,
+  isActiveHalf: PropTypes.bool,
+  willBeActive: PropTypes.bool,
+  isDisabled: PropTypes.bool
+}
 ```
 
 ## Real world example
