@@ -24,15 +24,14 @@ render() {
 ## API
 
 ```html
-<Rater total={} rating={} limit={} onRate={} />
+<Rater total={} rating={} onRate={} />
 ```
 
 All attributes are optional.
 
 * `total`: default 5
 * `rating`: default 0
-* `limit`: default value is same as `total`.
-* `onRate`: `function(e)`. Callback to retrieve rating value.
+* `onRate`: `function()`. Callback to retrieve rating value.
 * `interactive`: default `true`. Create a read-only rater by setting this attribute to `false`.
 
 ### Read-only mode
@@ -56,17 +55,7 @@ For mousemove/mouseenter/mouseleave, the structure of argument is:
 For click, the structure of argument:
 ```
 {
-  rating: Number // the rating value,
-  lastRating: Number // the last rating value,
-  originalEvent: Event
-}
-```
-Example: you may want to delete the rating when user rate a same value.
-```javascript
-onRate({ rating, lastRating, originalEvent }) {
-  if (originalEvent.type === 'click' && rating === lastRating) {
-    // set prop of Rater to 0
-  }
+  rating: Number // the rating value
 }
 ```
 

@@ -60,6 +60,10 @@
 
 	var _src2 = _interopRequireDefault(_src);
 
+	var _LimitedRater = __webpack_require__(177);
+
+	var _LimitedRater2 = _interopRequireDefault(_LimitedRater);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -85,19 +89,19 @@
 	        normal: '😐',
 	        good: '😍'
 	      };
-	      if (this.props.isActive || this.props.willBeActive) {
-	        return _react2.default.createElement(
-	          'span',
-	          null,
-	          icons[this.props.icon]
-	        );
-	      } else {
-	        return _react2.default.createElement(
-	          'span',
-	          null,
-	          '😶'
-	        );
-	      }
+	      var _props = this.props;
+	      var isActive = _props.isActive;
+	      var willBeActive = _props.willBeActive;
+	      var icon = _props.icon;
+	      var onMouseEnter = _props.onMouseEnter;
+	      var onClick = _props.onClick;
+
+	      var faceicon = isActive || willBeActive ? icons[icon] : '😶';
+	      return _react2.default.createElement(
+	        'span',
+	        { onMouseEnter: onMouseEnter, onClick: onClick },
+	        faceicon
+	      );
 	    }
 	  }]);
 
@@ -179,7 +183,7 @@
 	              null,
 	              'limit'
 	            ),
-	            ' attribute'
+	            ' attribute (See example/LimitedRater)'
 	          ),
 	          _react2.default.createElement(
 	            'dd',
@@ -190,10 +194,10 @@
 	              _react2.default.createElement(
 	                'code',
 	                null,
-	                '<Rater total={5} rating={2} limit={4} />'
+	                '<LimitedRater total={5} rating={2} limit={4} />'
 	              )
 	            ),
-	            _react2.default.createElement(_src2.default, { total: 5, rating: 2, limit: 4 })
+	            _react2.default.createElement(_LimitedRater2.default, { total: 5, rating: 2, max: 4, min: 1 })
 	          ),
 	          _react2.default.createElement(
 	            'dt',
@@ -21694,18 +21698,11 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _star = __webpack_require__(176);
-
-	Object.defineProperty(exports, 'Star', {
-	  enumerable: true,
-	  get: function get() {
-	    return _star.Star;
-	  }
-	});
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _star = __webpack_require__(176);
 
 	var _star2 = _interopRequireDefault(_star);
 
@@ -21719,6 +21716,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	exports.Star = _star2.default;
+
 	var Rater = function (_Component) {
 	  _inherits(Rater, _Component);
 
@@ -21728,91 +21727,48 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Rater).call(this, props));
 
 	    _this.state = {
-	      lastRating: props.rating,
 	      rating: props.rating,
+	      lastRating: props.rating,
 	      isRating: false
 	    };
 	    return _this;
 	  }
 
 	  _createClass(Rater, [{
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
+	    key: 'callback',
+	    value: function callback(args) {
+	      var callback = this.props.onRate;
+
+	      callback && callback(args);
+	    }
+	  }, {
+	    key: 'willRate',
+	    value: function willRate(rating) {
 	      this.setState({
-	        rating: nextProps.rating
+	        rating: rating,
+	        isRating: true
 	      });
+	      this.callback({ rating: rating });
 	    }
 	  }, {
-	    key: 'handleMouseEnter',
-	    value: function handleMouseEnter(e) {
-	      var _getRatingFromDOMEven = getRatingFromDOMEvent(e, this.props);
-
-	      var rating = _getRatingFromDOMEven.rating;
-	      var callback = this.props.onRate;
-	      if (rating > 0) {
-	        this.setState({
-	          rating: 0,
-	          isRating: true
-	        });
-	        callback && callback({
-	          originalEvent: e,
-	          rating: rating
-	        });
-	      }
-	    }
-	  }, {
-	    key: 'handleMouseMove',
-	    value: function handleMouseMove(e) {
-	      var _getRatingFromDOMEven2 = getRatingFromDOMEvent(e, this.props);
-
-	      var rating = _getRatingFromDOMEven2.rating;
-	      var callback = this.props.onRate;
-	      if (rating > 0) {
-	        this.setState({
-	          rating: rating,
-	          isRating: true
-	        });
-	        callback && callback({
-	          originalEvent: e,
-	          rating: rating
-	        });
-	      }
-	    }
-	  }, {
-	    key: 'handleMouseLeave',
-	    value: function handleMouseLeave(e) {
-	      var callback = this.props.onRate,
-	          state = this.state;
-	      this.setState({
-	        rating: state.lastRating,
-	        isRating: false
-	      });
-	      callback && callback({
-	        originalEvent: e,
-	        rating: state.lastRating
-	      });
-	    }
-	  }, {
-	    key: 'handleClick',
-	    value: function handleClick(e) {
-	      var _getRatingFromDOMEven3 = getRatingFromDOMEvent(e, this.props);
-
-	      var index = _getRatingFromDOMEven3.index;
-	      var rating = _getRatingFromDOMEven3.rating;
-	      var lastRating = Number(this.state.lastRating);
-	      var callback = this.props.onRate;
-	      if (rating < 0 || this.refs['star-' + index].props.isDisabled) {
-	        return;
-	      }
+	    key: 'onRate',
+	    value: function onRate(rating) {
 	      this.setState({
 	        rating: rating,
 	        lastRating: rating
 	      });
-	      callback && callback({
-	        originalEvent: e,
+	      this.callback({ rating: rating });
+	    }
+	  }, {
+	    key: 'onCancelRate',
+	    value: function onCancelRate() {
+	      var rating = this.state.lastRating;
+
+	      this.setState({
 	        rating: rating,
-	        lastRating: lastRating
+	        isRating: false
 	      });
+	      this.callback({ rating: rating });
 	    }
 	  }, {
 	    key: 'render',
@@ -21821,27 +21777,27 @@
 
 	      var _props = this.props;
 	      var total = _props.total;
-	      var limit = _props.limit;
-	      var rating = _props.rating;
 	      var interactive = _props.interactive;
 	      var children = _props.children;
 
-	      var rest = _objectWithoutProperties(_props, ['total', 'limit', 'rating', 'interactive', 'children']);
+	      var restProps = _objectWithoutProperties(_props, ['total', 'interactive', 'children']);
 
-	      total = Number(total);
-	      limit = Number(limit);
-	      rating = Number(this.state.rating);
+	      var _state = this.state;
+	      var rating = _state.rating;
+	      var isRating = _state.isRating;
+
 	      children = Array.prototype.concat(children).filter(Boolean);
-	      limit = this.props.limit === void 0 ? total : limit;
-	      delete rest.onRate;
-	      var nodes = Array(total).join(',').split(',').map(function (_, i) {
+	      delete restProps.rating;
+	      delete restProps.onRate;
+	      var nodes = Array.apply(null, Array(total)).map(function (_, i) {
 	        var starProps = {
-	          isActive: !_this2.state.isRating && rating - i >= 1,
-	          isActiveHalf: !_this2.state.isRating && rating - i >= 0.5 && rating - i < 1,
-	          willBeActive: _this2.state.isRating && i < rating,
-	          isDisabled: i >= limit,
 	          key: 'star-' + i,
-	          ref: 'star-' + i
+	          isActive: !isRating && rating - i >= 1,
+	          willBeActive: isRating && i < rating,
+	          isActiveHalf: !isRating && rating - i >= 0.5 && rating - i < 1,
+	          isDisabled: !interactive,
+	          onClick: _this2.onRate.bind(_this2, i + 1),
+	          onMouseEnter: _this2.willRate.bind(_this2, i + 1)
 	        };
 	        if (children.length) {
 	          return _react2.default.cloneElement(children[i % children.length], starProps);
@@ -21852,18 +21808,13 @@
 	      if (interactive) {
 	        return _react2.default.createElement(
 	          'div',
-	          _extends({ className: 'react-rater',
-	            onMouseEnter: this.handleMouseEnter.bind(this),
-	            onMouseLeave: this.handleMouseLeave.bind(this),
-	            onMouseMove: this.handleMouseMove.bind(this),
-	            onClick: this.handleClick.bind(this)
-	          }, rest),
+	          _extends({ className: 'react-rater', onMouseLeave: this.onCancelRate.bind(this) }, restProps),
 	          nodes
 	        );
 	      } else {
 	        return _react2.default.createElement(
 	          'div',
-	          _extends({ className: 'react-rater is-disabled' }, rest),
+	          _extends({ className: 'react-rater' }, restProps),
 	          nodes
 	        );
 	      }
@@ -21876,47 +21827,19 @@
 	exports.default = Rater;
 
 
+	Rater.propTypes = {
+	  total: _react.PropTypes.number,
+	  rating: _react.PropTypes.number,
+	  interactive: _react.PropTypes.bool,
+	  children: _react.PropTypes.any,
+	  onRate: _react.PropTypes.func
+	};
+
 	Rater.defaultProps = {
 	  total: 5,
 	  rating: 0,
 	  interactive: true
 	};
-
-	Rater.propTypes = {
-	  total: _react.PropTypes.number,
-	  rating: _react.PropTypes.number,
-	  limit: _react.PropTypes.number,
-	  interactive: _react.PropTypes.bool,
-	  onRate: _react.PropTypes.func,
-	  children: _react.PropTypes.any
-	};
-
-	function getRatingFromDOMEvent(e, props) {
-	  var allStars = Array.apply(null, e.currentTarget.childNodes),
-	      star = findStarDOMNode(e.target, allStars, e.currentTarget),
-	      index = allStars.indexOf(star),
-	      rating = index + 1,
-	      limit = Number(props.limit);
-	  if (index < 0) {
-	    return {
-	      index: index,
-	      rating: -1
-	    };
-	  }
-	  limit = props.limit === void 0 ? props.total : limit;
-	  rating = rating < limit ? rating : limit;
-	  return {
-	    index: index,
-	    rating: Number(rating)
-	  };
-	}
-
-	function findStarDOMNode(node, stars, container) {
-	  while (node !== container && stars.indexOf(node) === -1) {
-	    node = node.parentNode;
-	  }
-	  return node;
-	}
 
 /***/ },
 /* 176 */
@@ -21967,9 +21890,21 @@
 	      }).map(function (prop) {
 	        return nameMap[prop];
 	      }).join(' ');
+	      var _props = this.props;
+	      var onClick = _props.onClick;
+	      var onMouseEnter = _props.onMouseEnter;
+	      var isDisabled = _props.isDisabled;
+
+	      if (isDisabled) {
+	        return _react2.default.createElement(
+	          'a',
+	          { className: className },
+	          '★'
+	        );
+	      }
 	      return _react2.default.createElement(
 	        'a',
-	        { className: className },
+	        { className: className, onClick: onClick, onMouseEnter: onMouseEnter },
 	        '★'
 	      );
 	    }
@@ -21992,8 +21927,104 @@
 	  isActive: _react.PropTypes.bool,
 	  isActiveHalf: _react.PropTypes.bool,
 	  willBeActive: _react.PropTypes.bool,
-	  isDisabled: _react.PropTypes.bool
+	  isDisabled: _react.PropTypes.bool,
+	  onClick: _react.PropTypes.func,
+	  onMouseEnter: _react.PropTypes.func,
+	  onMouseLeave: _react.PropTypes.func
 	};
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _src = __webpack_require__(175);
+
+	var _src2 = _interopRequireDefault(_src);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var LimitedRater = function (_Component) {
+	  _inherits(LimitedRater, _Component);
+
+	  function LimitedRater() {
+	    _classCallCheck(this, LimitedRater);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LimitedRater).apply(this, arguments));
+	  }
+
+	  _createClass(LimitedRater, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var total = _props.total;
+	      var min = _props.min;
+	      var max = _props.max;
+	      var rating = this.props.rating;
+
+	      var minStars = Array.apply(null, Array(min)).map(function (_, i) {
+	        return _react2.default.createElement(_src.Star, {
+	          isActive: true,
+	          isDisabled: true,
+	          key: 'min-' + i });
+	      });
+	      var maxStars = Array.apply(null, Array(total - max)).map(function (_, i) {
+	        return _react2.default.createElement(_src.Star, {
+	          isActive: false,
+	          isDisabled: true,
+	          key: 'max' + i });
+	      });
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'react-rater' },
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            style: { display: 'inline-block' } },
+	          minStars
+	        ),
+	        _react2.default.createElement(_src2.default, {
+	          rating: rating - min,
+	          total: max - min
+	        }),
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            style: { display: 'inline-block' } },
+	          maxStars
+	        )
+	      );
+	    }
+	  }]);
+
+	  return LimitedRater;
+	}(_react.Component);
+
+	LimitedRater.propTypes = {
+	  min: _react.PropTypes.number,
+	  max: _react.PropTypes.number,
+	  rating: _react.PropTypes.number,
+	  total: _react.PropTypes.number
+	};
+
+	exports.default = LimitedRater;
 
 /***/ }
 /******/ ]);

@@ -54,7 +54,7 @@ class Example extends Component {
             </pre>
             <Rater />
           </dd>
-          <dt>Limit maximum rating by setting <code>limit</code> attribute</dt>
+          <dt>Limit maximum rating by setting <code>limit</code> attribute (See example/LimitedRater)</dt>
           <dd>
             <pre>
               <code>

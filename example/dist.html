@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>React Star Rater</title>
+    <link rel="stylesheet" href="../dist/react-rater.css">
+  </head>
+  <body>
+    <div class="db-rater" data-props='{"rating":2}'></div>
+    <script type="text/javascript">
+    // sdk-do.js
+    // sdk-amd.js
+    // sdk-sea.js
+      // hasReact and version right? continue: loadReact
+      // $('.db-rater')
+      // load React-Rater.js
+      // $('.db-tag-input')
+      // load TagEditor.js
+      // $('.db-like')
+      // load Dialog.js & TagEditor.js & LikeButton.js
+      // ---
+      // Do.add('React')
+      // Do.add('Dialog')
+      // Do.add('TagEditor')
+      // ---
+      if ($('db-like').length) {
+        Do('React', 'Dialog', 'TagEditor', () => {
+          // render LikeButton in db-like
+        })
+      }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
+    <script src="../dist/react-rater.js"></script>
+    <script type="text/javascript">
+      let rater = document.querySelectorAll('.db-rater')
+      rater.forEach((node) => {
+        ReactDOM.render(
+          React.createElement(ReactRater.default,
+            JSON.parse(node.dataset['props'])), node)
+      })
+    </script>
+  </body>
+</html>
