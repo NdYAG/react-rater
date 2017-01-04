@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import Star from './star'
 
-export { Star } from './star'
+export { Star }
 
 export default class Rater extends Component {
   constructor(props) {
@@ -39,9 +39,11 @@ export default class Rater extends Component {
     this.callback({ rating })
   }
   render() {
-    let { total, interactive, children } = this.props
+    let { total, interactive, children, ...restProps } = this.props
     let { rating, isRating } = this.state
     children = Array.prototype.concat(children).filter(Boolean)
+    delete restProps.rating
+    delete restProps.onRate
     let nodes = Array.apply(null, Array(total)).map((_, i) => {
       let starProps = {
         key: `star-${i}`,
@@ -60,13 +62,13 @@ export default class Rater extends Component {
     })
     if (interactive) {
       return (
-        <div className="react-rater" onMouseLeave={this.onCancelRate.bind(this)}>
+        <div className="react-rater" onMouseLeave={this.onCancelRate.bind(this)} {...restProps}>
           {nodes}
         </div>
       )
     } else {
       return (
-        <div className="react-rater">{nodes}</div>
+        <div className="react-rater" {...restProps}>{nodes}</div>
       )
     }
   }
