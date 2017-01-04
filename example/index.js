@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import Rater from '../src/'
+import LimitedRater from './LimitedRater'
 
 class Face extends Component {
   render() {
@@ -9,11 +10,9 @@ class Face extends Component {
       normal: '😐',
       good: '😍'
     }
-    if (this.props.isActive || this.props.willBeActive) {
-      return (<span>{icons[this.props.icon]}</span>)
-    } else {
-      return (<span>😶</span>)
-    }
+    let { isActive, willBeActive, icon, onMouseEnter, onClick } = this.props
+    let faceicon = (isActive || willBeActive)? icons[icon] : '😶'
+    return (<span onMouseEnter={onMouseEnter} onClick={onClick}>{faceicon}</span>)
   }
 }
 
@@ -59,10 +58,10 @@ class Example extends Component {
           <dd>
             <pre>
               <code>
-                {'<Rater total={5} rating={2} limit={4} />'}
+                {'<LimitedRater total={5} rating={2} limit={4} />'}
               </code>
             </pre>
-            <Rater total={5} rating={2} limit={4} />
+            <LimitedRater total={5} rating={2} max={4} min={1} />
           </dd>
           <dt>Retrieve rating value by setting a callback on <code>onRate</code></dt>
           <dd>
