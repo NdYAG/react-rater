@@ -24,12 +24,6 @@ $react-rater-active: #000 !default;
       overflow: hidden;
     }
     &.is-disabled {
-      color: $react-rater-link;
-      cursor: not-allowed;
-    }
-  }
-  &.is-disabled {
-    a {
       cursor: default;
     }
   }
