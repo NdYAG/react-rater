@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import Rater from '../src/'
 import LimitedRater from './LimitedRater'
@@ -20,7 +21,9 @@ Face.propTypes = {
   isActive: PropTypes.bool,
   willBeActive: PropTypes.bool,
   isDisabled: PropTypes.bool,
-  icon: PropTypes.string
+  icon: PropTypes.string,
+  onMouseEnter: PropTypes.func,
+  onClick: PropTypes.func
 }
 
 class Example extends Component {
