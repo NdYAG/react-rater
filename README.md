@@ -6,7 +6,7 @@ Star rater
 
 [Live demo](https://rawgit.com/ndyag/react-rater/master/example/index.html)
 
-## install
+## Install
 
 ```
 npm install react-rater
@@ -24,7 +24,7 @@ render() {
 ## API
 
 ```html
-<Rater total={} rating={} onRate={} />
+<Rater total={} rating={} onRate={} interactive={} />
 ```
 
 All attributes are optional.
@@ -45,7 +45,7 @@ In read-only mode, `rating` could contain a fractional part like `3.6`. (Thanks 
 `onRate` is called on mousemove/mouseenter/click/mouseleave.
 
 For mousemove/mouseenter/mouseleave, the structure of argument is:
-```
+```json
 {
   rating: Number // the rating value,
   originalEvent: Event
@@ -53,7 +53,7 @@ For mousemove/mouseenter/mouseleave, the structure of argument is:
 ```
 
 For click, the structure of argument:
-```
+```json
 {
   rating: Number // the rating value
 }
@@ -75,7 +75,7 @@ $react-rater-active: #000 !default; // color of star rated
 
 In this way you can define your own 'star' component ([src/star.js](https://github.com/NdYAG/react-rater/blob/master/src%2Fstar.js)).
 
-```
+```html
 <Rater total={5}>
   <Heart />
 </Rater>
@@ -83,7 +83,7 @@ In this way you can define your own 'star' component ([src/star.js](https://gith
 
 and style it based on these props:
 
-```
+```json
 {
   isActive: PropTypes.bool,
   isActiveHalf: PropTypes.bool,
