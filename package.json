@@ -1,6 +1,6 @@
 {
   "name": "react-rater",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "A star rater in react.js",
   "main": "lib/index.js",
   "directories": {
@@ -65,5 +65,8 @@
     "react-addons-test-utils": "^15.0.2",
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.8"
   }
 }
