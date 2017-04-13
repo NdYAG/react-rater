@@ -45,17 +45,17 @@ In read-only mode, `rating` could contain a fractional part like `3.6`. (Thanks 
 `onRate` is called on mousemove/mouseenter/click/mouseleave.
 
 For mousemove/mouseenter/mouseleave, the structure of argument is:
-```json
+```
 {
-  rating: Number // the rating value,
+  rating: Number
   originalEvent: Event
 }
 ```
 
 For click, the structure of argument:
-```json
+```
 {
-  rating: Number // the rating value
+  rating: Number
 }
 ```
 
@@ -83,7 +83,7 @@ In this way you can define your own 'star' component ([src/star.js](https://gith
 
 and style it based on these props:
 
-```json
+```
 {
   isActive: PropTypes.bool,
   isActiveHalf: PropTypes.bool,
