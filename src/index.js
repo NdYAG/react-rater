@@ -22,7 +22,6 @@ export default class Rater extends Component {
       rating,
       isRating: true
     })
-    this.callback({ rating })
   }
   onRate(rating) {
     this.setState({
@@ -37,7 +36,6 @@ export default class Rater extends Component {
       rating,
       isRating: false
     })
-    this.callback({ rating })
   }
   render() {
     let { total, interactive, children, ...restProps } = this.props
