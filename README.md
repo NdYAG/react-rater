@@ -45,17 +45,12 @@ In read-only mode, `rating` could contain a fractional part like `3.6`. (Thanks 
 `onRate` is called on mousemove/mouseenter/click/mouseleave.
 
 For mousemove/mouseenter/mouseleave, the structure of argument is:
-```
-{
-  rating: Number
-  originalEvent: Event
-}
-```
 
-For click, the structure of argument:
+(`rating` is passed with the React's [SyntheticEvent](https://facebook.github.io/react/docs/events.html))
 ```
 {
   rating: Number
+  ...syntheticEvent
 }
 ```
 

@@ -137,14 +137,15 @@
 
 	  _createClass(Example, [{
 	    key: 'handleRate',
-	    value: function handleRate(e) {
+	    value: function handleRate(_ref) {
+	      var rating = _ref.rating;
+	      var type = _ref.type;
+
 	      this.setState({
-	        rating: e.rating
+	        rating: rating
 	      });
-	      // lastRating is not undefined,
-	      // which means user have rated
-	      if (e.lastRating !== void 0) {
-	        alert('You rated ' + e.rating);
+	      if (type === 'click') {
+	        alert('You rated ' + rating);
 	      }
 	    }
 	  }, {
@@ -22599,32 +22600,32 @@
 	    }
 	  }, {
 	    key: 'willRate',
-	    value: function willRate(rating) {
+	    value: function willRate(rating, e) {
 	      this.setState({
 	        rating: rating,
 	        isRating: true
 	      });
-	      this.callback({ rating: rating });
+	      this.callback(_extends({}, e, { rating: rating }));
 	    }
 	  }, {
 	    key: 'onRate',
-	    value: function onRate(rating) {
+	    value: function onRate(rating, e) {
 	      this.setState({
 	        rating: rating,
 	        lastRating: rating
 	      });
-	      this.callback({ rating: rating });
+	      this.callback(_extends({}, e, { rating: rating }));
 	    }
 	  }, {
 	    key: 'onCancelRate',
-	    value: function onCancelRate() {
+	    value: function onCancelRate(e) {
 	      var rating = this.state.lastRating;
 
 	      this.setState({
 	        rating: rating,
 	        isRating: false
 	      });
-	      this.callback({ rating: rating });
+	      this.callback(_extends({}, e, { rating: rating }));
 	    }
 	  }, {
 	    key: 'render',

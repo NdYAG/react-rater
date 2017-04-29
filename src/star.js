@@ -20,7 +20,7 @@ export default class Star extends Component {
       )
     }
     return (
-        <a className={className} onClick={onClick} onMouseEnter={onMouseEnter}>★</a>
+      <a className={className} onClick={onClick} onMouseEnter={onMouseEnter}>★</a>
     )
   }
 }

@@ -33,14 +33,12 @@ class Example extends Component {
       rating: 0
     }
   }
-  handleRate(e) {
+  handleRate({ rating, type }) {
     this.setState({
-      rating: e.rating
+      rating: rating
     })
-    // lastRating is not undefined,
-    // which means user have rated
-    if (e.lastRating !== void 0) {
-      alert('You rated ' + e.rating)
+    if (type === 'click') {
+      alert('You rated ' + rating)
     }
   }
   render() {

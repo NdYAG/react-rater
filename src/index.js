@@ -17,27 +17,27 @@ export default class Rater extends Component {
     let { onRate: callback } = this.props
     callback && callback(args)
   }
-  willRate(rating) {
+  willRate(rating, e) {
     this.setState({
       rating,
       isRating: true
     })
-    this.callback({ rating })
+    this.callback({ ...e, rating })
   }
-  onRate(rating) {
+  onRate(rating, e) {
     this.setState({
       rating,
       lastRating: rating
     })
-    this.callback({ rating })
+    this.callback({ ...e, rating })
   }
-  onCancelRate() {
+  onCancelRate(e) {
     let { lastRating: rating } = this.state
     this.setState({
       rating,
       isRating: false
     })
-    this.callback({ rating })
+    this.callback({ ...e, rating })
   }
   render() {
     let { total, interactive, children, ...restProps } = this.props
