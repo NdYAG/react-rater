@@ -149,6 +149,13 @@
 	      }
 	    }
 	  }, {
+	    key: 'rate',
+	    value: function rate() {
+	      this.setState({
+	        rating: 5
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -233,6 +240,11 @@
 	              'span',
 	              null,
 	              'Rating value: ' + this.state.rating
+	            ),
+	            _react2.default.createElement(
+	              'button',
+	              { onClick: this.rate.bind(this) },
+	              'Set rating to 5'
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -22626,6 +22638,17 @@
 	        isRating: false
 	      });
 	      this.callback(_extends({}, e, { rating: rating }));
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      var rating = nextProps.rating;
+
+	      if (rating !== this.state.rating) {
+	        this.setState({
+	          rating: rating
+	        });
+	      }
 	    }
 	  }, {
 	    key: 'render',
