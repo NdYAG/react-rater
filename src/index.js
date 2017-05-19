@@ -39,6 +39,14 @@ export default class Rater extends Component {
     })
     this.callback({ ...e, rating })
   }
+  componentWillReceiveProps(nextProps) {
+    let { rating } = nextProps
+    if (rating !== this.state.rating) {
+      this.setState({
+        rating
+      })
+    }
+  }
   render() {
     let { total, interactive, children, ...restProps } = this.props
     let { rating, isRating } = this.state

@@ -41,6 +41,11 @@ class Example extends Component {
       alert('You rated ' + rating)
     }
   }
+  rate() {
+    this.setState({
+      rating: 5
+    })
+  }
   render() {
     return (
       <div>
@@ -73,6 +78,7 @@ class Example extends Component {
             </pre>
             <Rater rating={this.state.rating} onRate={this.handleRate.bind(this)} />
             <span>{ 'Rating value: ' + this.state.rating}</span>
+            <button onClick={this.rate.bind(this)}>Set rating to 5</button>
           </dd>
           <dt>Read-only</dt>
           <dd>
