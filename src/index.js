@@ -66,19 +66,20 @@ export default class Rater extends Component {
       if (children.length) {
         return React.cloneElement(children[i % children.length], starProps)
       } else {
-        return (<Star {...starProps} />)
+        return <Star {...starProps} />
       }
     })
     if (interactive) {
       return (
-        <div className="react-rater" onMouseLeave={this.onCancelRate.bind(this)} {...restProps}>
+        <div
+          className="react-rater"
+          onMouseLeave={this.onCancelRate.bind(this)}
+          {...restProps}>
           {nodes}
         </div>
       )
     } else {
-      return (
-        <div className="react-rater" {...restProps}>{nodes}</div>
-      )
+      return <div className="react-rater" {...restProps}>{nodes}</div>
     }
   }
 }

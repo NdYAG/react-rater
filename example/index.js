@@ -12,8 +12,8 @@ class Face extends Component {
       good: '😍'
     }
     let { isActive, willBeActive, icon, onMouseEnter, onClick } = this.props
-    let faceicon = (isActive || willBeActive)? icons[icon] : '😶'
-    return (<span onMouseEnter={onMouseEnter} onClick={onClick}>{faceicon}</span>)
+    let faceicon = isActive || willBeActive ? icons[icon] : '😶'
+    return <span onMouseEnter={onMouseEnter} onClick={onClick}>{faceicon}</span>
   }
 }
 
@@ -60,7 +60,10 @@ class Example extends Component {
             </pre>
             <Rater />
           </dd>
-          <dt>Limit maximum rating by setting <code>limit</code> attribute (See example/LimitedRater)</dt>
+          <dt>
+            Limit maximum rating by setting <code>limit</code> attribute (See
+            example/LimitedRater)
+          </dt>
           <dd>
             <pre>
               <code>
@@ -69,15 +72,20 @@ class Example extends Component {
             </pre>
             <LimitedRater total={5} rating={2} max={4} min={1} />
           </dd>
-          <dt>Retrieve rating value by setting a callback on <code>onRate</code></dt>
+          <dt>
+            Retrieve rating value by setting a callback on <code>onRate</code>
+          </dt>
           <dd>
             <pre>
               <code>
                 {'<Rater onRate={this.handleRate.bind(this)} />'}
               </code>
             </pre>
-            <Rater rating={this.state.rating} onRate={this.handleRate.bind(this)} />
-            <span>{ 'Rating value: ' + this.state.rating}</span>
+            <Rater
+              rating={this.state.rating}
+              onRate={this.handleRate.bind(this)}
+            />
+            <span>{'Rating value: ' + this.state.rating}</span>
             <button onClick={this.rate.bind(this)}>Set rating to 5</button>
           </dd>
           <dt>Read-only</dt>

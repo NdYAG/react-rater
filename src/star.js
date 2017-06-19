@@ -10,17 +10,17 @@ export default class Star extends Component {
       willBeActive: 'will-be-active'
     }
     let className = Object.keys(nameMap)
-          .filter((prop) => this.props[prop])
-          .map((prop) => nameMap[prop])
-          .join(' ')
+      .filter(prop => this.props[prop])
+      .map(prop => nameMap[prop])
+      .join(' ')
     let { onClick, onMouseEnter, isDisabled } = this.props
     if (isDisabled) {
-      return (
-        <a className={className}>★</a>
-      )
+      return <a className={className}>★</a>
     }
     return (
-      <a className={className} onClick={onClick} onMouseEnter={onMouseEnter}>★</a>
+      <a className={className} onClick={onClick} onMouseEnter={onMouseEnter}>
+        ★
+      </a>
     )
   }
 }
