@@ -8,11 +8,11 @@
   },
   "scripts": {
     "test": "jest --verbose",
-    "compile-scss": "sass --sourcemap=none src/react-rater.scss",
-    "build-lib": "rm -rf lib && babel src --out-dir lib; npm run -s compile-scss >> lib/react-rater.css",
+    "compile-scss": "node-sass src/react-rater.scss",
+    "build-lib": "rm -rf lib && mkdir lib && babel src --out-dir lib; npm run -s compile-scss >> lib/react-rater.css",
     "build-dist": "webpack; npm run -s compile-scss >> dist/react-rater.css",
     "build-example-js": "webpack",
-    "build-example-css": "sass --sourcemap=none example/index.scss example/build.css",
+    "build-example-css": "node-sass example/index.scss > example/build.css",
     "build-example": "npm run build-example-js & npm run build-example-css",
     "prepublish": "npm run build-lib",
     "start": "webpack-dev-server"
@@ -53,6 +53,7 @@
     "eslint-loader": "^1.2.0",
     "eslint-plugin-react": "^5.0.1",
     "jest": "^20.0.4",
+    "node-sass": "^4.5.3",
     "react-test-renderer": "^15.6.1",
     "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1"
