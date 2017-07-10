@@ -1,6 +1,6 @@
 # React-rater
 
-Star rater
+Star rater   [![Build Status](https://travis-ci.org/NdYAG/react-rater.svg?branch=master)](https://travis-ci.org/NdYAG/react-rater)
 
 ![](http://7d9o0k.com1.z0.glb.clouddn.com/rater.gif)
 
