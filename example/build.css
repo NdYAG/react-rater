@@ -1,6 +1,8 @@
 .react-rater {
   display: inline-block;
   line-height: normal; }
+  .react-rater > * {
+    display: inline-block; }
   .react-rater a {
     cursor: pointer;
     color: #ccc;
@@ -19,7 +21,8 @@
     .react-rater a.is-disabled {
       cursor: default; }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0; }
 
@@ -49,6 +52,9 @@ pre {
   overflow: auto; }
   pre code {
     background: transparent; }
+
+.face-rater > * {
+  display: inline-block; }
 
 .face-rater span {
   display: inline-block;

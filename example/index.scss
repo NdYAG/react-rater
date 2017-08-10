@@ -4,7 +4,8 @@ $react-rater-active: $gold;
 
 @import "../src/react-rater";
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -42,6 +43,9 @@ pre {
 }
 
 .face-rater {
+  > * {
+    display: inline-block;
+  }
   span {
     display: inline-block;
     font-size: 4rem;
