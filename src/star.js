@@ -13,15 +13,7 @@ export default class Star extends Component {
       .filter(prop => this.props[prop])
       .map(prop => nameMap[prop])
       .join(' ')
-    let { onClick, onMouseEnter, isDisabled } = this.props
-    if (isDisabled) {
-      return <a className={className}>★</a>
-    }
-    return (
-      <a className={className} onClick={onClick} onMouseEnter={onMouseEnter}>
-        ★
-      </a>
-    )
+    return <a className={className}>★</a>
   }
 }
 
@@ -36,8 +28,5 @@ Star.propTypes = {
   isActive: PropTypes.bool,
   isActiveHalf: PropTypes.bool,
   willBeActive: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  onClick: PropTypes.func,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func
+  isDisabled: PropTypes.bool
 }

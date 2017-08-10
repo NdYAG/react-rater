@@ -14,6 +14,7 @@ npm install react-rater
 
 ```js
 import Rater from 'react-rater'
+import 'react-rater/lib/react-rater.css'
 
 // ...
 render() {

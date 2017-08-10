@@ -1,6 +1,6 @@
 {
   "name": "react-rater",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "A star rater in react.js",
   "main": "lib/index.js",
   "directories": {
@@ -21,12 +21,7 @@
     "type": "git",
     "url": "https://github.com/NdYAG/react-rater.git"
   },
-  "keywords": [
-    "react",
-    "rater",
-    "star-rater",
-    "react-component"
-  ],
+  "keywords": ["react", "rater", "star-rater", "react-component"],
   "author": "NdYAG",
   "license": "BSD",
   "bugs": {
@@ -38,8 +33,7 @@
     "react-dom": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
-    "babel": "^6.3.26",
-    "babel-cli": "^6.4.5",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.4.5",
     "babel-eslint": "^6.0.4",
     "babel-jest": "^20.0.3",
@@ -53,6 +47,7 @@
     "eslint-loader": "^1.2.0",
     "eslint-plugin-react": "^5.0.1",
     "jest": "^20.0.4",
+    "jest-cli": "^20.0.4",
     "node-sass": "^4.5.3",
     "react-test-renderer": "^15.6.1",
     "webpack": "^1.12.12",
