@@ -1,14 +1,14 @@
 var path = require('path')
 
 var webpackModule = {
-  preLoaders: [{
+  rules: [{
     test: /\.js$/,
     exclude: /(node_modules|bower_components)/,
-    loader: 'eslint-loader'
-  }],
-  loaders: [{
+    loader: 'eslint-loader',
+    enforce: 'pre'
+  },{
     test: /\.js$/,
-    loader: 'babel',
+    loader: 'babel-loader',
     exclude: /(node_modules|bower_components)/
   }]
 }
@@ -20,9 +20,6 @@ module.exports = [{
     path: __dirname + '/example',
     filename: 'build.js',
     publicPath: '/example/'
-  },
-  devServer: {
-    hot: true
   },
   module: webpackModule
 }, {
@@ -40,7 +37,7 @@ module.exports = [{
   },
   module: webpackModule,
   resolve: {
-    root: path.resolve('./src'),
-    extensions: ['', '.js']
+    modules: [path.resolve('./src'), "node_modules"],
+    extensions: ['.js']
   }
 }]
