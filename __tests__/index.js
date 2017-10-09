@@ -1,6 +1,9 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import Enzyme, { mount } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
 import Rater from '../src'
+
+Enzyme.configure({ adapter: new Adapter() })
 
 describe('Interactive rater: <Rater total={5} rating={2} />', () => {
   const rater = mount(<Rater total={5} rating={2} />)
