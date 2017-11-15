@@ -3,23 +3,24 @@
   line-height: normal; }
   .react-rater > * {
     display: inline-block; }
-  .react-rater a {
-    cursor: pointer;
-    color: #ccc;
-    position: relative; }
-    .react-rater a.will-be-active {
-      color: #ffdd99; }
-    .react-rater a.is-active {
-      color: #fc6; }
-    .react-rater a.is-active-half:before {
-      color: #fc6;
-      content: '\2605';
-      position: absolute;
-      left: 0;
-      width: 50%;
-      overflow: hidden; }
-    .react-rater a.is-disabled {
-      cursor: default; }
+
+.react-rater-star {
+  cursor: pointer;
+  color: #ccc;
+  position: relative; }
+  .react-rater-star.will-be-active {
+    color: #ffdd99; }
+  .react-rater-star.is-active {
+    color: #fc6; }
+  .react-rater-star.is-active-half:before {
+    color: #fc6;
+    content: '\2605';
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden; }
+  .react-rater-star.is-disabled {
+    cursor: default; }
 
 html,
 body {
