@@ -8,7 +8,7 @@ $react-rater-active: #000 !default;
   > * {
     display: inline-block;
   }
-  a {
+  .star {
     cursor: pointer;
     color: $react-rater-link;
     position: relative;

@@ -13,7 +13,7 @@ export default class Star extends Component {
       .filter(prop => this.props[prop])
       .map(prop => nameMap[prop])
       .join(' ')
-    return <a className={className}>★</a>
+    return <div className={"star " + className}>★</div>
   }
 }
 
