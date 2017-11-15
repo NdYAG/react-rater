@@ -10,10 +10,10 @@ export default class Star extends Component {
       willBeActive: 'will-be-active'
     }
     let className = Object.keys(nameMap)
-      .filter(prop => this.props[prop])
-      .map(prop => nameMap[prop])
-      .join(' ')
-    return <div className={"star " + className}>★</div>
+                          .filter(prop => this.props[prop])
+                          .map(prop => nameMap[prop])
+                          .join(' ')
+    return <div className={`react-rater-star ${className}`}>★</div>
   }
 }
 
