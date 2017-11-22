@@ -1081,12 +1081,13 @@ var Rater = function (_Component) {
     }
   }, {
     key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
+    value: function componentWillReceiveProps(nextProps, props) {
       var rating = nextProps.rating;
 
-      if (rating !== this.state.rating) {
+      if (rating !== props.rating) {
         this.setState({
-          rating: rating
+          rating: rating,
+          lastRating: rating
         });
       }
     }
@@ -1265,10 +1266,10 @@ var Example = function (_Component2) {
       var rating = _ref.rating,
           type = _ref.type;
 
-      this.setState({
-        rating: rating
-      });
       if (type === 'click') {
+        /* this.setState({
+         *   rating: rating
+         * })*/
         alert('You rated ' + rating);
       }
     }
