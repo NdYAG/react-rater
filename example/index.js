@@ -34,10 +34,10 @@ class Example extends Component {
     }
   }
   handleRate({ rating, type }) {
-    this.setState({
-      rating: rating
-    })
     if (type === 'click') {
+      this.setState({
+        rating: rating
+      })
       alert('You rated ' + rating)
     }
   }

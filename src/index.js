@@ -39,11 +39,12 @@ export default class Rater extends Component {
     })
     this.callback({ ...e, rating })
   }
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps, props) {
     let { rating } = nextProps
-    if (rating !== this.state.rating) {
+    if (rating !== props.rating) {
       this.setState({
-        rating
+        rating,
+        lastRating: rating
       })
     }
   }
