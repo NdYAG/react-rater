@@ -16,7 +16,6 @@ interface RaterProps {
     total?: number
     rating?: number
     interactive?: boolean
-    children?: Component[]
     onRate?(rating:number, event:SyntheticEvent<number>): void
 }
 
