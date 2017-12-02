@@ -1,6 +1,6 @@
 // TypeScript Version: 2.3
 
-import { Component, SyntheticEvent } from 'react'
+import { Component } from 'react'
 
 interface StarProps {
     isActive?: boolean
@@ -16,7 +16,7 @@ interface RaterProps {
     total?: number
     rating?: number
     interactive?: boolean
-    onRate?(rating:number, event:SyntheticEvent<number>): void
+    onRate?(event:any): void
 }
 
 export default class Rater extends Component<RaterProps> {
