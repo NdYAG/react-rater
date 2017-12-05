@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest --verbose",
     "compile-scss": "node-sass src/react-rater.scss",
-	"build-lib-windows": "(if exist lib rd /s /q lib) && mkdir lib && babel src --out-dir lib && copy src\\index.d.ts lib && npm run -s compile-scss >> lib/react-rater.css && copy src\\react-rater-sass.scss lib ",
+    "build-lib-windows": "(if exist lib rd /s /q lib) && mkdir lib && babel src --out-dir lib && copy src\\index.d.ts lib && npm run -s compile-scss >> lib/react-rater.css && copy src\\react-rater-sass.scss lib ",
     "build-lib": "rm -rf lib && mkdir lib && babel src --out-dir lib && cp src/index.d.ts lib/index.d.ts; npm run -s compile-scss >> lib/react-rater.css; cp src/react-rater-sass.scss lib/",
     "build-dist": "webpack; npm run -s compile-scss >> dist/react-rater.css",
     "build-example-js": "webpack",
