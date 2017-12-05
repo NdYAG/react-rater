@@ -1,6 +1,6 @@
 {
   "name": "react-rater",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "A star rater in react.js",
   "main": "lib/index.js",
   "directories": {
@@ -9,7 +9,7 @@
   "scripts": {
     "test": "jest --verbose",
     "compile-scss": "node-sass src/react-rater.scss",
-    "build-lib": "rm -rf lib && mkdir lib && babel src --out-dir lib; npm run -s compile-scss >> lib/react-rater.css",
+    "build-lib": "rm -rf lib && mkdir lib && babel src --out-dir lib; npm run -s compile-scss >> lib/react-rater.css; cp src/react-rater.scss lib/",
     "build-dist": "webpack; npm run -s compile-scss >> dist/react-rater.css",
     "build-example-js": "webpack",
     "build-example-css": "node-sass example/index.scss > example/build.css",
