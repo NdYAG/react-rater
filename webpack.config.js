@@ -10,7 +10,8 @@ var webpackModule = {
     test: /\.js$/,
     loader: 'babel-loader',
     exclude: /(node_modules|bower_components)/
-  }]
+  }
+  ]
 }
 
 module.exports = [{
