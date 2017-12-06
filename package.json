@@ -3,18 +3,20 @@
   "version": "0.4.8",
   "description": "A star rater in react.js",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "example": "example"
   },
   "scripts": {
     "test": "jest --verbose",
     "compile-scss": "node-sass src/react-rater.scss",
-    "build-lib": "rm -rf lib && mkdir lib && babel src --out-dir lib; npm run -s compile-scss >> lib/react-rater.css; cp src/react-rater.scss lib/",
+    "build-lib-windows": "(if exist lib rd /s /q lib) && mkdir lib && babel src --out-dir lib && copy src\\index.d.ts lib && npm run -s compile-scss >> lib/react-rater.css && copy src\\react-rater-sass.scss lib ",
+    "build-lib": "rm -rf lib && mkdir lib && babel src --out-dir lib; npm run -s compile-scss >> lib/react-rater.css; cp src/react-rater.scss lib/; cp src/index.d.ts lib/index.d.ts",
     "build-dist": "webpack; npm run -s compile-scss >> dist/react-rater.css",
     "build-example-js": "webpack",
     "build-example-css": "node-sass example/index.scss > example/build.css",
     "build-example": "npm run build-example-js & npm run build-example-css",
-    "prepublish": "npm run build-lib",
+    "prepublish": "npm run build-lib || npm run build-lib-windows",
     "start": "webpack-dev-server --hot"
   },
   "repository": {
