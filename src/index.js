@@ -39,7 +39,7 @@ export default class Rater extends Component {
     })
     this.callback({ ...e, rating })
   }
-  componentWillReceiveProps(nextProps, props) {
+  UNSAFE_componentWillReceiveProps(nextProps, props) {
     let { rating } = nextProps
     if (rating !== props.rating) {
       this.setState({
