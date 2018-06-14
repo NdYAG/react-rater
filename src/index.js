@@ -13,31 +13,31 @@ export default class Rater extends Component {
       isRating: false
     }
   }
-  callback(args) {
-    let { onRate: callback } = this.props
-    callback && callback(args)
-  }
   willRate(rating, e) {
     this.setState({
       rating,
       isRating: true
     })
-    this.callback({ ...e, rating })
+    const { onRating: callback } = this.props
+    callback && callback({ ...e, rating })
   }
   onRate(rating, e) {
     this.setState({
       rating,
-      lastRating: rating
+      lastRating: rating,
+      isRating: false
     })
-    this.callback({ ...e, rating })
+    const { onRate: callback } = this.props
+    callback && callback({ ...e, rating })
   }
-  onCancelRate(e) {
+  onCancelRate() {
     let { lastRating: rating } = this.state
     this.setState({
       rating,
       isRating: false
     })
-    this.callback({ ...e, rating })
+    const { onCancelRate: callback } = this.props
+    callback && callback({ rating })
   }
   UNSAFE_componentWillReceiveProps(nextProps, props) {
     let { rating } = nextProps
@@ -96,7 +96,9 @@ Rater.propTypes = {
   rating: PropTypes.number,
   interactive: PropTypes.bool,
   children: PropTypes.any,
-  onRate: PropTypes.func
+  onRate: PropTypes.func,
+  onRating: PropTypes.func,
+  onCancelRate: PropTypes.func
 }
 
 Rater.defaultProps = {

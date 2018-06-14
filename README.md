@@ -1,10 +1,10 @@
 # React-rater
 
-Star rater   [![Build Status](https://travis-ci.org/NdYAG/react-rater.svg?branch=master)](https://travis-ci.org/NdYAG/react-rater)
+Star rater [![Build Status](https://travis-ci.org/NdYAG/react-rater.svg?branch=master)](https://travis-ci.org/NdYAG/react-rater)
 
-![](http://7d9o0k.com1.z0.glb.clouddn.com/rater.gif)
+![](http://p8785ijw6.bkt.gdipper.com/rating.gif)
 
-[Live demo](https://rawgit.com/ndyag/react-rater/master/example/index.html)
+[Check out the new demo!](https://rawgit.com/ndyag/react-rater/master/example/index.html)
 
 ## Install
 
@@ -25,15 +25,19 @@ render() {
 ## API
 
 ```html
-<Rater total={} rating={} onRate={} interactive={} />
+<Rater total={} rating={} interactive={} onRate={} onRating={} />
 ```
 
 All attributes are optional.
 
-* `total`: default 5
-* `rating`: default 0
-* `onRate`: `function()`. Callback to retrieve rating value.
-* `interactive`: default `true`. Create a read-only rater by setting this attribute to `false`.
+- `total`: Number, default 5
+- `rating`: Number, default 0
+- `interactive`: Boolean, default `true`. Create a read-only rater by setting this attribute to `false`.
+- `onRate`: `function({ rating })`. Callback to retrieve rating value. Called after rated.
+- `onRating`: `function({ rating })`. Callback to retrieve rating value. Called during rating (mouse moving between stars).
+- `onCancelRate`: `function({ rating })`. Called when mouse moves out from rater.
+
+From version 5.0.0, callback is split into `onRate` & `onRating` & `onCancelRate`. `onRate` is called when mouse click, while `onRating` is called when mouse moves between star components and `onCancelRate` is called when mouse leaves rater. Usually you only need `onRate`.
 
 ### Read-only mode
 
@@ -43,11 +47,10 @@ In read-only mode, `rating` could contain a fractional part like `3.6`. (Thanks 
 
 ### Callback
 
-`onRate` is called on mousemove/mouseenter/click/mouseleave.
-
-For mousemove/mouseenter/mouseleave, the structure of argument is:
+`onRate` & `onRating`
 
 (`rating` is passed with the React's [SyntheticEvent](https://facebook.github.io/react/docs/events.html))
+
 ```
 {
   rating: Number
@@ -60,8 +63,8 @@ For mousemove/mouseenter/mouseleave, the structure of argument is:
 ### The CSS way
 
 ```scss
-$react-rater-link: #ccc !default;   // color of star not rated
-$react-rater-hover: #666 !default;  // color of star on hover
+$react-rater-link: #ccc !default; // color of star not rated
+$react-rater-hover: #666 !default; // color of star on hover
 $react-rater-active: #000 !default; // color of star rated
 ```
 

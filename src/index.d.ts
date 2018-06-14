@@ -17,6 +17,8 @@ interface RaterProps {
     rating?: number
     interactive?: boolean
     onRate?(event:any): void
+    onRating?(event:any): void
+    onCancelRate?(event:any): void
 }
 
 export default class Rater extends Component<RaterProps> {

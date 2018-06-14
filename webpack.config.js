@@ -1,15 +1,21 @@
-var path = require('path')
+const path = require('path')
 
 var webpackModule = {
   rules: [{
     test: /\.js$/,
     exclude: /(node_modules|bower_components)/,
-    loader: 'eslint-loader',
+    use: 'eslint-loader',
     enforce: 'pre'
   },{
     test: /\.js$/,
-    loader: 'babel-loader',
+    use: 'babel-loader',
     exclude: /(node_modules|bower_components)/
+  },{
+    test: /\.scss$|\.css$/,
+    use: ['style-loader', 'css-loader', 'sass-loader']
+  },{
+    test: /\.svg$/,
+    use: 'file-loader'
   }
   ]
 }

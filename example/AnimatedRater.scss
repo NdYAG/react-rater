@@ -1,0 +1,9 @@
+.animated-rater {
+  transform: translateZ(0);
+  .react-rater > * {
+    margin-left: 1rem;
+  }
+  svg {
+    cursor: pointer;
+  }
+}
