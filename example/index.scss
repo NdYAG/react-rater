@@ -51,7 +51,7 @@ h3 {
   section {
     &:not(:first-child) {
       font-size: 1.5rem;
-      flex: 1 0 50%;
+      flex: 1 1 50%;
       .react-rater {
         font-size: 2rem;
       }
@@ -68,4 +68,5 @@ code {
   color: #494949;
   font-weight: bold;
   display: block;
+  min-width: 15rem;
 }
