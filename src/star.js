@@ -1,20 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class Star extends Component {
-  render() {
-    let nameMap = {
-      isDisabled: 'is-disabled',
-      isActive: 'is-active',
-      isActiveHalf: 'is-active-half',
-      willBeActive: 'will-be-active'
-    }
-    let className = Object.keys(nameMap)
-                          .filter(prop => this.props[prop])
-                          .map(prop => nameMap[prop])
-                          .join(' ')
-    return <div className={`react-rater-star ${className}`} {...this.props}>★</div>
+const Star = (props) => {
+  const nameMap = {
+    isDisabled: 'is-disabled',
+    isActive: 'is-active',
+    isActiveHalf: 'is-active-half',
+    willBeActive: 'will-be-active'
   }
+  const className = Object.keys(nameMap)
+        .filter(prop => props[prop])
+        .map(prop => nameMap[prop])
+        .join(' ')
+  return <div className={`react-rater-star ${className}`} {...props}>★</div>
 }
 
 Star.defaultProps = {
@@ -30,3 +28,5 @@ Star.propTypes = {
   willBeActive: PropTypes.bool,
   isDisabled: PropTypes.bool
 }
+
+export default Star
