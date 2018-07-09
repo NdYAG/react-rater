@@ -95,8 +95,8 @@ const Angry = ({ willBeActive, isActive }) => {
 }
 
 Smile.propTypes = Normal.propTypes = Angry.propTypes = {
-  willBeActive: PropTypes.boolean,
-  isActive: PropTypes.boolean
+  willBeActive: PropTypes.bool,
+  isActive: PropTypes.bool
 }
 
 export default class EmojiRater extends Component {

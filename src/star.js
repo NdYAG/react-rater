@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Star = (props) => {
+  const starProps = Object.assign({}, props)
   const nameMap = {
     isDisabled: 'is-disabled',
     isActive: 'is-active',
@@ -9,10 +10,10 @@ const Star = (props) => {
     willBeActive: 'will-be-active'
   }
   const className = Object.keys(nameMap)
-        .filter(prop => props[prop])
+        .filter(prop => (delete starProps[prop], props[prop]))
         .map(prop => nameMap[prop])
         .join(' ')
-  return <div className={`react-rater-star ${className}`} {...props}>★</div>
+  return <div className={`react-rater-star ${className}`} {...starProps}>★</div>
 }
 
 Star.defaultProps = {
