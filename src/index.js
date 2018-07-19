@@ -54,6 +54,8 @@ export default class Rater extends Component {
     children = Children.toArray(children)
     delete restProps.rating
     delete restProps.onRate
+    delete restProps.onRating
+    delete restProps.onCancelRate
     let nodes = Array.apply(null, Array(total)).map((_, i) => {
       let starProps = {
         isActive: !isRating && rating - i >= 1,
