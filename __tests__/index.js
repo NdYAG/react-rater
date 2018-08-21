@@ -25,3 +25,24 @@ describe('Readonly rater: <React rating={2} interactive={false} />', () => {
     expect(rater.find('.is-active').length).toEqual(2)
   })
 })
+
+describe('Rater with callback', () => {
+  const handleRate = jest.fn()
+  const handleRating = jest.fn()
+  const handleCancelRate = jest.fn()
+  const rater = mount(<Rater onRate={handleRate} onRating={handleRating} onCancelRate={handleCancelRate} />)
+  it('onRate will be called when user clicks star', () => {
+    rater.find('.react-rater').childAt(3).simulate('click')
+    expect(handleRate).toHaveBeenCalled()
+  })
+  it('onRating will be called when mouse moves on stars', () => {
+    rater.find('.react-rater').childAt(2).simulate('mouseenter')
+    rater.find('.react-rater').childAt(3).simulate('mouseenter')
+    expect(handleRating).toHaveBeenCalled()
+    expect(handleRating.mock.calls.length).toBe(2)
+  })
+  it('onCancelRate will be called when mouse moves out from rater', () => {
+    rater.find('.react-rater').simulate('mouseleave')
+    expect(handleCancelRate).toHaveBeenCalled()
+  })
+})
