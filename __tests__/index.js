@@ -13,7 +13,10 @@ describe('Interactive rater: <Rater total={5} rating={2} />', () => {
     expect(rater.find('.is-active').length).toEqual(2)
   })
   it('renders 3 active stars when rate 3', () => {
-    rater.find('.react-rater').childAt(2).simulate('click')
+    rater
+      .find('.react-rater')
+      .childAt(2)
+      .simulate('click')
     expect(rater.find('.is-active').length).toEqual(3)
   })
 })
@@ -21,7 +24,10 @@ describe('Interactive rater: <Rater total={5} rating={2} />', () => {
 describe('Readonly rater: <React rating={2} interactive={false} />', () => {
   const rater = mount(<Rater rating={2} interactive={false} />)
   it('render 2 active stars when rate 3', () => {
-    rater.find('.react-rater').childAt(2).simulate('click')
+    rater
+      .find('.react-rater')
+      .childAt(2)
+      .simulate('click')
     expect(rater.find('.is-active').length).toEqual(2)
   })
 })
@@ -30,19 +36,34 @@ describe('Rater with callback', () => {
   const handleRate = jest.fn()
   const handleRating = jest.fn()
   const handleCancelRate = jest.fn()
-  const rater = mount(<Rater onRate={handleRate} onRating={handleRating} onCancelRate={handleCancelRate} />)
+  const rater = mount(
+    <Rater
+      onRate={handleRate}
+      onRating={handleRating}
+      onCancelRate={handleCancelRate}
+    />
+  )
   it('onRate will be called when user clicks star', () => {
-    rater.find('.react-rater').childAt(3).simulate('click')
+    rater
+      .find('.react-rater')
+      .childAt(3)
+      .simulate('click')
     expect(handleRate).toHaveBeenCalled()
   })
   it('onRating will be called when mouse moves on stars', () => {
-    rater.find('.react-rater').childAt(2).simulate('mouseenter')
-    rater.find('.react-rater').childAt(3).simulate('mouseenter')
+    rater
+      .find('.react-rater')
+      .childAt(2)
+      .simulate('mouseover')
+    rater
+      .find('.react-rater')
+      .childAt(3)
+      .simulate('mouseover')
     expect(handleRating).toHaveBeenCalled()
     expect(handleRating.mock.calls.length).toBe(2)
   })
   it('onCancelRate will be called when mouse moves out from rater', () => {
-    rater.find('.react-rater').simulate('mouseleave')
+    rater.find('.react-rater').simulate('mouseout')
     expect(handleCancelRate).toHaveBeenCalled()
   })
 })
