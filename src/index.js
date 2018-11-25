@@ -67,10 +67,13 @@ export default class Rater extends Component {
         <div
           key={`star-${i}`}
           onClick={interactive ? this.onRate.bind(this, i + 1) : null}
-          onMouseEnter={interactive ? this.willRate.bind(this, i + 1) : null}>
-          {children.length
-            ? React.cloneElement(children[i % children.length], starProps)
-            : <Star {...starProps} />}
+          onMouseOver={interactive ? this.willRate.bind(this, i + 1) : null}
+        >
+          {children.length ? (
+            React.cloneElement(children[i % children.length], starProps)
+          ) : (
+            <Star {...starProps} />
+          )}
         </div>
       )
     })
@@ -78,8 +81,9 @@ export default class Rater extends Component {
       return (
         <div
           className="react-rater"
-          onMouseLeave={this.onCancelRate.bind(this)}
-          {...restProps}>
+          onMouseOut={this.onCancelRate.bind(this)}
+          {...restProps}
+        >
           {nodes}
         </div>
       )
