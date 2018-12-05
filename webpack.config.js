@@ -8,8 +8,15 @@ var webpackModule = {
     enforce: 'pre'
   },{
     test: /\.js$/,
-    use: 'babel-loader',
-    exclude: /(node_modules|bower_components)/
+    use: {
+      loader: 'babel-loader',
+      options: {
+        babelrc: false,
+        presets: ["react", "env", "stage-2"],
+        plugins: ["react-hot-loader/babel"],
+      },
+    },
+    exclude: /(node_modules|bower_components)/,
   },{
     test: /\.scss$|\.css$/,
     use: ['style-loader', 'css-loader', 'sass-loader']
