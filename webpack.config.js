@@ -12,7 +12,6 @@ var webpackModule = {
       loader: 'babel-loader',
       options: {
         babelrc: false,
-        presets: ["react", "env", "stage-2"],
         plugins: ["react-hot-loader/babel"],
       },
     },
