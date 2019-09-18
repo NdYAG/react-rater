@@ -39,14 +39,15 @@ export default class Rater extends Component {
     const { onCancelRate: callback } = this.props
     callback && callback({ rating })
   }
-  UNSAFE_componentWillReceiveProps(nextProps, props) {
-    let { rating } = nextProps
-    if (rating !== props.rating) {
-      this.setState({
+  static getDerivedStateFromProps(props, state) {
+    const { rating } = props
+    if (rating !== state.rating) {
+      return {
         rating,
         lastRating: rating
-      })
+      }
     }
+    return null
   }
   render() {
     let { total, interactive, children, ...restProps } = this.props
