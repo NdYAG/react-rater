@@ -9,11 +9,7 @@ var webpackModule = {
   },{
     test: /\.js$/,
     use: {
-      loader: 'babel-loader',
-      options: {
-        babelrc: false,
-        plugins: ["react-hot-loader/babel"],
-      },
+      loader: 'babel-loader'
     },
     exclude: /(node_modules|bower_components)/,
   },{
@@ -34,6 +30,7 @@ module.exports = [{
     filename: 'build.js',
     publicPath: '/example/'
   },
+  devtool: 'cheap-module-eval-source-map',
   module: webpackModule
 }, {
   name: 'lib',
