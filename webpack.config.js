@@ -6,16 +6,16 @@ var webpackModule = {
     exclude: /(node_modules|bower_components)/,
     use: 'eslint-loader',
     enforce: 'pre'
-  },{
+  }, {
     test: /\.js$/,
     use: {
       loader: 'babel-loader'
     },
     exclude: /(node_modules|bower_components)/,
-  },{
+  }, {
     test: /\.scss$|\.css$/,
     use: ['style-loader', 'css-loader', 'sass-loader']
-  },{
+  }, {
     test: /\.svg$/,
     use: 'file-loader'
   }
@@ -24,7 +24,7 @@ var webpackModule = {
 
 module.exports = [{
   name: 'example',
-  entry: __dirname + '/example/index.js',
+  entry: ['react-hot-loader/patch', __dirname + '/example/index.js'],
   output: {
     path: __dirname + '/example',
     filename: 'build.js',
