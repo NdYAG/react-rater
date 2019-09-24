@@ -1,7 +1,8 @@
 .animated-rater {
   transform: translateZ(0);
+  cursor: pointer;
   .react-rater > * {
-    margin-left: 1rem;
+    padding-left: 1rem;
   }
   svg {
     cursor: pointer;
