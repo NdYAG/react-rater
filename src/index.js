@@ -16,10 +16,10 @@ export default function Rater(props) {
   } = props
   const [state, setState] = useState({
     rating: props.rating,
-    lastRating: props.rating,
     isRating: false
   })
-  const { rating, lastRating, isRating } = state
+  const { rating, isRating } = state
+  let lastRating = rating
 
   function updateState(vals) {
     setState(prevState => {
@@ -38,9 +38,9 @@ export default function Rater(props) {
   function rate(rating, e) {
     updateState({
       rating,
-      lastRating: rating,
       isRating: false
     })
+    lastRating = rating
     onRate && onRate({ ...e, rating })
   }
 
