@@ -1,4 +1,4 @@
-import React, { Children, useState } from 'react'
+import React, { Children, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Star from './star'
 
@@ -9,6 +9,7 @@ export default function Rater(props) {
     total,
     interactive,
     children,
+    rating: defaultRating,
     onRate,
     onRating,
     onCancelRate,
@@ -52,8 +53,13 @@ export default function Rater(props) {
     onCancelRate && onCancelRate({ rating })
   }
 
+  useEffect(() => {
+    updateState({
+      rating: defaultRating
+    })
+  }, [defaultRating])
+
   children = Children.toArray(children)
-  delete restProps.rating
 
   const nodes = Array.apply(null, Array(total)).map((_, i) => {
     const starProps = {
