@@ -1,100 +1,97 @@
-import React, { Component, Children } from 'react'
+import React, { Children, useState } from 'react'
 import PropTypes from 'prop-types'
 import Star from './star'
 
 export { Star }
 
-export default class Rater extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      rating: props.rating,
-      lastRating: props.rating,
-      isRating: false
-    }
+export default function Rater(props) {
+  let {
+    total,
+    interactive,
+    children,
+    onRate,
+    onRating,
+    onCancelRate,
+    ...restProps
+  } = props
+  const [state, setState] = useState({
+    rating: props.rating,
+    lastRating: props.rating,
+    isRating: false
+  })
+  const { rating, lastRating, isRating } = state
+
+  function updateState(vals) {
+    setState(prevState => {
+      return { ...prevState, ...vals }
+    })
   }
-  willRate(rating, e) {
-    this.setState({
+
+  function willRate(rating, e) {
+    updateState({
       rating,
       isRating: true
     })
-    const { onRating: callback } = this.props
-    callback && callback({ ...e, rating })
+    onRating && onRating({ ...e, rating })
   }
-  onRate(rating, e) {
-    this.setState({
+
+  function rate(rating, e) {
+    updateState({
       rating,
       lastRating: rating,
       isRating: false
     })
-    const { onRate: callback } = this.props
-    callback && callback({ ...e, rating })
+    onRate && onRate({ ...e, rating })
   }
-  onCancelRate() {
-    let { lastRating: rating } = this.state
-    this.setState({
-      rating,
+
+  function cancelRate() {
+    updateState({
+      rating: lastRating,
       isRating: false
     })
-    const { onCancelRate: callback } = this.props
-    callback && callback({ rating })
+    onCancelRate && onCancelRate({ rating })
   }
-  static getDerivedStateFromProps(props, state) {
-    const { rating } = props
-    if (rating !== state.rating) {
-      return {
-        rating,
-        lastRating: rating
-      }
+
+  children = Children.toArray(children)
+  delete restProps.rating
+
+  const nodes = Array.apply(null, Array(total)).map((_, i) => {
+    const starProps = {
+      isActive: !isRating && rating - i >= 1,
+      willBeActive: isRating && i < rating,
+      isActiveHalf: !isRating && (rating - i >= 0.5 && rating - i < 1),
+      isDisabled: !interactive
     }
-    return null
-  }
-  render() {
-    let { total, interactive, children, ...restProps } = this.props
-    let { rating, isRating } = this.state
-    children = Children.toArray(children)
-    delete restProps.rating
-    delete restProps.onRate
-    delete restProps.onRating
-    delete restProps.onCancelRate
-    let nodes = Array.apply(null, Array(total)).map((_, i) => {
-      let starProps = {
-        isActive: !isRating && rating - i >= 1,
-        willBeActive: isRating && i < rating,
-        isActiveHalf: !isRating && (rating - i >= 0.5 && rating - i < 1),
-        isDisabled: !interactive
-      }
-      return (
-        <div
-          key={`star-${i}`}
-          onClick={interactive ? this.onRate.bind(this, i + 1) : null}
-          onMouseOver={interactive ? this.willRate.bind(this, i + 1) : null}
-        >
-          {children.length ? (
-            React.cloneElement(children[i % children.length], starProps)
-          ) : (
-            <Star {...starProps} />
-          )}
-        </div>
-      )
-    })
-    if (interactive) {
-      return (
-        <div
-          className="react-rater"
-          onMouseOut={this.onCancelRate.bind(this)}
-          {...restProps}
-        >
-          {nodes}
-        </div>
-      )
-    } else {
-      return (
-        <div className="react-rater" {...restProps}>
-          {nodes}
-        </div>
-      )
-    }
+    return (
+      <div
+        key={`star-${i}`}
+        onClick={interactive ? rate.bind(this, i + 1) : null}
+        onMouseOver={interactive ? willRate.bind(this, i + 1) : null}
+      >
+        {children.length ? (
+          React.cloneElement(children[i % children.length], starProps)
+        ) : (
+          <Star {...starProps} />
+        )}
+      </div>
+    )
+  })
+  if (interactive) {
+    return (
+      <div
+        className="react-rater"
+        onMouseOut={cancelRate.bind(this)}
+        {...restProps}
+      >
+        {nodes}
+      </div>
+    )
+  } else {
+    return (
+      <div className="react-rater" {...restProps}>
+        {nodes}
+      </div>
+    )
   }
 }
 
