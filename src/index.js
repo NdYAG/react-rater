@@ -5,7 +5,7 @@ import Star from './star'
 export { Star }
 
 export default function Rater(props) {
-  let {
+  const {
     total,
     interactive,
     children,
@@ -21,11 +21,10 @@ export default function Rater(props) {
   })
   const { rating, isRating } = state
   const lastRating = useRef(rating)
+  const childElements = Children.toArray(children)
 
   function updateState(vals) {
-    setState(prevState => {
-      return { ...prevState, ...vals }
-    })
+    setState(prevState => ({ ...prevState, ...vals }))
   }
 
   function willRate(rating, e) {
@@ -59,9 +58,7 @@ export default function Rater(props) {
     })
   }, [defaultRating])
 
-  children = Children.toArray(children)
-
-  const nodes = Array.apply(null, Array(total)).map((_, i) => {
+  const nodes = Array.from(Array(total), (_, i) => {
     const starProps = {
       isActive: !isRating && rating - i >= 1,
       willBeActive: isRating && i < rating,
@@ -74,8 +71,8 @@ export default function Rater(props) {
         onClick={interactive ? rate.bind(this, i + 1) : null}
         onMouseOver={interactive ? willRate.bind(this, i + 1) : null}
       >
-        {children.length ? (
-          React.cloneElement(children[i % children.length], starProps)
+        {childElements.length ? (
+          React.cloneElement(childElements[i % childElements.length], starProps)
         ) : (
           <Star {...starProps} />
         )}
