@@ -1,4 +1,4 @@
-import React, { Children, useState, useEffect } from 'react'
+import React, { Children, useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import Star from './star'
 
@@ -20,7 +20,7 @@ export default function Rater(props) {
     isRating: false
   })
   const { rating, isRating } = state
-  let lastRating = rating
+  const lastRating = useRef(rating)
 
   function updateState(vals) {
     setState(prevState => {
@@ -41,13 +41,13 @@ export default function Rater(props) {
       rating,
       isRating: false
     })
-    lastRating = rating
+    lastRating.current = rating
     onRate && onRate({ ...e, rating })
   }
 
   function cancelRate() {
     updateState({
-      rating: lastRating,
+      rating: lastRating.current,
       isRating: false
     })
     onCancelRate && onCancelRate({ rating })
