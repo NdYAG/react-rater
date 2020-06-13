@@ -83,7 +83,7 @@ export default function Rater(props) {
     return (
       <div
         className="react-rater"
-        onMouseOut={cancelRate.bind(this)}
+        onMouseOut={cancelRate}
         {...restProps}
       >
         {nodes}
