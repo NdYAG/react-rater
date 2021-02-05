@@ -2,7 +2,7 @@
 
 Star rater [![Build Status](https://travis-ci.org/NdYAG/react-rater.svg?branch=master)](https://travis-ci.org/NdYAG/react-rater)
 
-![rating](https://user-images.githubusercontent.com/1396511/84562331-469ae280-ad86-11ea-9567-9d554b204138.gif)
+![](https://user-images.githubusercontent.com/1396511/84562331-469ae280-ad86-11ea-9567-9d554b204138.gif)
 
 [Check out our new demo!](https://rawgit.com/ndyag/react-rater/master/example/index.html)
 
@@ -21,6 +21,8 @@ render() {
   return (<Rater total={5} rating={2} />)
 }
 ```
+
+Note: If your react version is under 16.8.0 without hooks support, please keep using react-rater@5
 
 ## API
 
@@ -95,7 +97,7 @@ and style it based on these props:
 
 Valentine's Day:
 
-![valentine](https://user-images.githubusercontent.com/1396511/84562283-ee63e080-ad85-11ea-877e-0048b3bdbc97.png)
+![Valentine](https://user-images.githubusercontent.com/1396511/84562283-ee63e080-ad85-11ea-877e-0048b3bdbc97.png)
 
 Abilu judge system for Douban Music:
 

@@ -79,23 +79,15 @@ export default function Rater(props) {
       </div>
     )
   })
-  if (interactive) {
-    return (
-      <div
-        className="react-rater"
-        onMouseOut={cancelRate}
-        {...restProps}
-      >
-        {nodes}
-      </div>
-    )
-  } else {
-    return (
-      <div className="react-rater" {...restProps}>
-        {nodes}
-      </div>
-    )
-  }
+  return (
+    <div
+      className="react-rater"
+      {...(interactive ? {onMouseOut: cancelRate} : {})}
+      {...restProps}
+    >
+      {nodes}
+    </div>
+  )
 }
 
 Rater.propTypes = {

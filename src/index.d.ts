@@ -1,6 +1,4 @@
-// TypeScript Version: 2.3
-
-import { Component } from 'react'
+// TypeScript Version: 2.8
 
 interface StarProps {
     isActive?: boolean
@@ -9,8 +7,7 @@ interface StarProps {
     isDisabled?: boolean
 }
 
-export class Star extends Component<StarProps> {
-}
+export declare const Star: React.FC<StarProps>
 
 interface RaterProps {
     total?: number
@@ -21,5 +18,6 @@ interface RaterProps {
     onCancelRate?(event:any): void
 }
 
-export default class Rater extends Component<RaterProps> {
-}
+declare const Rater: React.FC<RaterProps>
+
+export default Rater
