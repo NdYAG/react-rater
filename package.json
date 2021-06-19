@@ -15,7 +15,7 @@
     "build-dist": "webpack; npm run -s compile-scss >> dist/react-rater.css",
     "build-example": "webpack --mode=production",
     "prepublish": "npm run build-lib || npm run build-lib-windows",
-    "start": "webpack-dev-server --hot"
+    "start": "webpack-dev-server --hot  --mode=development"
   },
   "repository": {
     "type": "git",
