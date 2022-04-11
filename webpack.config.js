@@ -1,12 +1,7 @@
 const path = require('path')
 
-var webpackModule = {
+const webpackModule = {
   rules: [{
-    test: /\.js$/,
-    exclude: /(node_modules|bower_components)/,
-    use: 'eslint-loader',
-    enforce: 'pre'
-  }, {
     test: /\.js$/,
     use: {
       loader: 'babel-loader'
@@ -30,8 +25,8 @@ module.exports = [{
     filename: 'build.js',
     publicPath: '/example/'
   },
-  devtool: 'cheap-module-eval-source-map',
-  module: webpackModule
+  devtool: 'cheap-module-source-map',
+  module: webpackModule,
 }, {
   name: 'lib',
   entry: __dirname + '/src/index.js',
@@ -49,5 +44,5 @@ module.exports = [{
   resolve: {
     modules: [path.resolve('./src'), "node_modules"],
     extensions: ['.js']
-  }
+  },
 }]

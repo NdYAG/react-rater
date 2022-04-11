@@ -13,6 +13,8 @@
     "node": true
   },
   "plugins": [
+    "babel",
+    "import",
     "react"
   ],
   "rules": {
