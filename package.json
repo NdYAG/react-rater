@@ -1,6 +1,6 @@
 {
   "name": "react-rater",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "A star rater in react.js",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
