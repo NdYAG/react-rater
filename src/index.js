@@ -1,4 +1,4 @@
-import React, { Children, useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
 import Star from './star'
 
@@ -8,7 +8,7 @@ export default function Rater(props) {
   const {
     total,
     interactive,
-    children,
+    renderStar,
     rating: defaultRating,
     onRate,
     onRating,
@@ -21,7 +21,6 @@ export default function Rater(props) {
   })
   const { rating, isRating } = state
   const lastRating = useRef(rating)
-  const childElements = Children.toArray(children)
 
   function updateState(vals) {
     setState(prevState => ({ ...prevState, ...vals }))
@@ -71,8 +70,8 @@ export default function Rater(props) {
         onClick={interactive ? rate.bind(this, i + 1) : null}
         onMouseOver={interactive ? willRate.bind(this, i + 1) : null}
       >
-        {childElements.length ? (
-          React.cloneElement(childElements[i % childElements.length], starProps)
+        {renderStar ? (
+          renderStar(i, starProps)
         ) : (
           <Star {...starProps} />
         )}
@@ -94,7 +93,7 @@ Rater.propTypes = {
   total: PropTypes.number,
   rating: PropTypes.number,
   interactive: PropTypes.bool,
-  children: PropTypes.any,
+  renderStar: PropTypes.func,
   onRate: PropTypes.func,
   onRating: PropTypes.func,
   onCancelRate: PropTypes.func

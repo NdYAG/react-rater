@@ -94,11 +94,10 @@ export default class AnimatedRater extends Component {
               total={5}
               rating={this.state.rating}
               onRate={this.handleRate.bind(this)}
-            >
-              {interpolatingStyles.map((style, i) => (
-                <Star style={{ transform: `scale(${style.x})` }} key={i} />
+              renderStar={(i, starProps) => interpolatingStyles.map((style, j) => (
+                i === j ? <Star style={{ transform: `scale(${style.x})` }} key={i} {...starProps} /> : null
               ))}
-            </Rater>
+            />
           )}
         </StaggeredMotion>
       </div>

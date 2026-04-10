@@ -33,11 +33,7 @@ class App extends Component {
           <EmojiRater />
           <pre>
             <code>
-              {`<Rater total={3} />
-  <Angry />
-  <Normal />
-  <Smile />
-</Rater>`}
+              {`<Rater total={3} renderStar={(i, starProps) => <Emojis[i] ...{props} />} />`}
             </code>
           </pre>
         </section>

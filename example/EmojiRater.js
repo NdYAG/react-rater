@@ -99,15 +99,17 @@ Smile.propTypes = Normal.propTypes = Angry.propTypes = {
   isActive: PropTypes.bool
 }
 
+const Emojis = [Angry, Normal, Smile];
+
 export default class EmojiRater extends Component {
+  renderStar(i, starProps) {
+    const Emoji = Emojis[i];
+    return <Emoji {...starProps} />;
+  }
   render() {
     return (
       <div className="emoji-rater">
-        <Rater total={3}>
-          <Angry />
-          <Normal />
-          <Smile />
-        </Rater>
+        <Rater total={3} renderStar={this.renderStar} />
       </div>
     )
   }

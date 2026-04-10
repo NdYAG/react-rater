@@ -72,14 +72,10 @@ $react-rater-active: #000 !default; // color of star rated
 
 ### The JS way
 
-`<Rater />` will repeat its children until counts reach `total`. https://github.com/NdYAG/react-rater/blob/master/src/index.js#L69
-
-In this way you can define your own 'star' component ([src/star.js](https://github.com/NdYAG/react-rater/blob/master/src%2Fstar.js)).
+You can define your own 'star' component ([src/star.js](https://github.com/NdYAG/react-rater/blob/master/src%2Fstar.js)).
 
 ```html
-<Rater total={5}>
-  <Heart />
-</Rater>
+<Rater total={5} renderStar={(i, starProps) => <Heart {...starProps} />} />
 ```
 
 and style it based on these props:
