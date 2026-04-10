@@ -4,8 +4,6 @@ Star rater [![Build Status](https://travis-ci.org/NdYAG/react-rater.svg?branch=m
 
 ![](https://user-images.githubusercontent.com/1396511/84562331-469ae280-ad86-11ea-9567-9d554b204138.gif)
 
-[Check out our new demo!](https://rawgit.com/ndyag/react-rater/master/example/index.html)
-
 ## Install
 
 ```
