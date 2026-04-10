@@ -1,6 +1,6 @@
 // TypeScript Version: 2.8
 
-interface StarProps {
+export interface StarProps {
   isActive?: boolean
   isActiveHalf?: boolean
   willBeActive?: boolean
