@@ -19,15 +19,14 @@ $react-rater-active: #000 !default;
   &.is-active {
     color: $react-rater-active;
   }
-  &.is-active-half:before {
-    color: $react-rater-active;
-    content: '\2605';
-    position: absolute;
-    left: 0;
-    width: 50%;
-    overflow: hidden;
-  }
   &.is-disabled {
     cursor: default;
   }
+}
+.react-rater-star__fill {
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: $react-rater-active;
 }

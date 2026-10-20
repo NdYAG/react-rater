@@ -36,6 +36,24 @@ describe('Readonly rater: <React rating={2} interactive={false} />', () => {
   })
 })
 
+describe('Readonly rater: <Rater rating={3.5} interactive={false} />', () => {
+  const rater = mount(<Rater rating={3.5} interactive={false} />)
+  it('renders 3 active stars and one partial fill', () => {
+    expect(rater.find('.is-active').length).toEqual(3)
+    expect(rater.find('.react-rater-star__fill').length).toEqual(1)
+    expect(rater.find('.react-rater-star__fill').prop('style').width).toEqual('50%')
+  })
+})
+
+describe('renderStar receives fillRatio', () => {
+  const renderStar = jest.fn((i, starProps) => <div key={i}>{starProps.fillRatio}</div>)
+  mount(<Rater rating={3.6} interactive={false} renderStar={renderStar} />)
+  it('passes the fractional part to the custom star', () => {
+    expect(renderStar).toHaveBeenCalled()
+    expect(renderStar.mock.calls[3][1].fillRatio).toEqual(0.6)
+  })
+})
+
 describe('Rater with callback', () => {
   const handleRate = jest.fn()
   const handleRating = jest.fn()

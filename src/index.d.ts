@@ -2,9 +2,10 @@
 
 export interface StarProps {
   isActive?: boolean
-  isActiveHalf?: boolean
   willBeActive?: boolean
   isDisabled?: boolean
+  /** Fill ratio of the star, from 0 to 1 */
+  fillRatio?: number
 }
 
 export declare const Star: React.FC<StarProps>

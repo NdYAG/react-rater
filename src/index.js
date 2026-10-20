@@ -57,11 +57,22 @@ export default function Rater(props) {
     })
   }, [defaultRating])
 
+  function getFillRatio(i) {
+    if (isRating) {
+      return i < rating ? 1 : 0
+    }
+    if (!interactive) {
+      const ratio = Math.min(Math.max(rating - i, 0), 1)
+      return Math.round(ratio * 10000) / 10000
+    }
+    return rating - i >= 1 ? 1 : 0
+  }
+
   const nodes = Array.from(Array(total), (_, i) => {
     const starProps = {
       isActive: !isRating && rating - i >= 1,
       willBeActive: isRating && i < rating,
-      isActiveHalf: !isRating && (rating - i >= 0.5 && rating - i < 1),
+      fillRatio: getFillRatio(i),
       isDisabled: !interactive
     }
     return (

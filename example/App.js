@@ -20,8 +20,8 @@ class App extends Component {
         </section>
         <section className="PlainRater">
           <h3>2. Static</h3>
-          <Rater rating={2} total={5} interactive={false} />
-          <code>{'<Rater rating={2} total={5} interactive={false} />'}</code>
+          <Rater rating={3.6} total={5} interactive={false} />
+          <code>{'<Rater rating={3.6} total={5} interactive={false} />'}</code>
         </section>
         <section className="RaterWithCallback">
           <h3>3. Callback</h3>

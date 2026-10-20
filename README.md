@@ -85,11 +85,13 @@ and style it based on these props:
 ```
 {
   isActive: PropTypes.bool,
-  isActiveHalf: PropTypes.bool,
   willBeActive: PropTypes.bool,
-  isDisabled: PropTypes.bool
+  isDisabled: PropTypes.bool,
+  fillRatio: PropTypes.number
 }
 ```
+
+`fillRatio` is a number from `0` to `1`, representing how much of the star is filled. In read-only mode, a fractional rating like `3.6` gives the fourth star `fillRatio` of `0.6`.
 
 ## Real world example
 
