@@ -4,3 +4,5 @@ node_modules
 bower_components
 lib/
 dist/
+example/build.js
+example/build.js.LICENSE.txt
